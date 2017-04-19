@@ -1,7 +1,7 @@
 {
-  "name": "react-es6-template",
+  "name": "react-currency-calculator",
   "version": "1.0.0",
-  "description": "The project template for react with es6.",
+  "description": "The react component of keyboard with calculation function to input currency.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
