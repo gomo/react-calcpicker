@@ -5,7 +5,8 @@ window.onload = () => {
   var template = ReactDOM.render(
     <App
       locale='ja'
-      amount={12300.49}
+      initialAmount={12300.49}
+      className="btn btn-default"
     />,
     document.getElementById('wrapper')
   );
