@@ -3,7 +3,10 @@ import {App} from '../index';
 
 window.onload = () => {
   var template = ReactDOM.render(
-    <App />,
+    <App
+      locale='ja'
+      amount={12300.49}
+    />,
     document.getElementById('wrapper')
   );
 }
