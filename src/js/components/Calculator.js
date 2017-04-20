@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import currency from '../currency'
+import numeral from 'numeral'
 import Button from './Button'
 
 export default class Calculator extends Component
@@ -7,15 +7,22 @@ export default class Calculator extends Component
   constructor(props) {
     super(props);
     this.state = {
-      amount: props.initialAmount
+      amount: props.initialAmount,
+      format: '0,0[.]0[000000000]',
+      operator: ' ',
     }
   }
 
   render(){
+    const locale = numeral.localeData();
     return (
       <div className="react-currency-calculator__calculator">
+        <div className="react-currency-calculator__calculator-header">
+          <Button classType="close" display="×" onClick={() => this.close()} />
+        </div>
         <div className="react-currency-calculator__calculator-display">
-          {currency(this.state.amount).format()}
+          <div className="react-currency-calculator__calculator-display-operator">{this.state.operator}</div>
+          <div className="react-currency-calculator__calculator-display-number">{numeral(this.state.amount).format(this.state.format)}</div>
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="clear" display="AC" onClick={() => this.allClear()} />
@@ -44,8 +51,8 @@ export default class Calculator extends Component
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="number" display="0" onClick={() => this.onClickZero()} />
           <Button classType="number" display="00" onClick={() => this.onClickDoubleZero()} />
-          <Button classType="number" display="." onClick={() => this.onClickDecimal()} />
-          <Button classType="func" display="=" onClick={() => this.onClickEnter()} />
+          <Button classType="number" display={locale.delimiters.decimal} onClick={() => this.onClickDecimal()} />
+          <Button classType="enter" display="=" onClick={() => this.onClickEnter()} />
         </div>
       </div>
     );

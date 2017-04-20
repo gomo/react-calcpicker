@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import currency from '../currency'
+import numeral from 'numeral'
 import Button from './Button'
 import classNames from 'class-names'
 

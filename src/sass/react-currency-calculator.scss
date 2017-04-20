@@ -1,21 +1,39 @@
+@import "compass";
+@import 'mixin';
+
+$gridMargin: 3px;
+
+.react-currency-calculator{
+  display: inline-block;
+}
+
+.react-currency-calculator__calculator{
+  border: 1px solid #ccc;
+  @include border-radius(6px);
+  padding: 10px;
+  padding-top: 5px;
+  @include box-shadow(3px 3px 12px -3px rgba(0, 0, 0, 0.4));
+}
+
 .react-currency-calculator__calculator-button{
   display: inline-block;
   width: 48px;
   height: 32px;
   padding: 0;
   font-size: 16px;
-  margin: 3px;
+  margin: $gridMargin;
   display: inline-block;
   font-weight: bold;
   text-align: center;
-  vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: 4px;
+  @include border-radius(4px);
+  @include user-select(none);
+  cursor: pointer;
 }
 
 .react-currency-calculator__calculator-button-number{
   color: #222;
-  background-color: #efefef;
+  background-color: #fcfcfc;
   border-color: #ccc;
 }
 
@@ -29,4 +47,43 @@
   color: #fff;
   background-color: #2d415a;
   border-color: #131b25;
+}
+
+.react-currency-calculator__calculator-button-enter{
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.react-currency-calculator__calculator-button-close{
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  width: 24px;
+  height: 24px;
+}
+
+.react-currency-calculator__calculator-display{
+  @include clearfix();
+  margin: $gridMargin;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  @include border-radius(4px);
+  background-color: #f2fac9;
+  line-height: 16px;
+}
+
+.react-currency-calculator__calculator-display-operator{
+  float: left;
+}
+
+.react-currency-calculator__calculator-display-number{
+  text-align: right;
+  float: right;
+}
+
+.react-currency-calculator__calculator-header{
+  text-align: right;
 }

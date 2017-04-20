@@ -29,6 +29,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.5.0",
+    "numeral": "^2.0.6",
     "webpack": "^1.13.3"
   }
 }
