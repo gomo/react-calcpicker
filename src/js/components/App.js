@@ -13,6 +13,13 @@ export default class App extends Component
       openCalculator: false,
       amount: props.initialAmount
     }
+
+    document.onmousemove = (e) => {
+      this.setState({
+        x: e.clientX + (window.pageXOffset || document.documentElement.scrollLeft),
+        y: e.clientY + (window.pageYOffset || document.documentElement.scrollTop)
+      })
+    };
   }
 
   componentWillReceiveProps(nextProps){
@@ -41,6 +48,7 @@ export default class App extends Component
   render(){
     return (
       <div className="react-currency-calculator">
+        <div style={{position: 'fixed', top: 0, left: 0}}>x: {this.state.x} y: {this.state.y}</div>
         <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
           {numeral(this.state.amount).format(this.props.currencyFormat)}
         </button>
@@ -49,6 +57,7 @@ export default class App extends Component
             initialAmount={this.state.amount}
             onClickClose={() => this.toggleCalculator()}
             button={this.refs.button}
+            positions={this.props.positions}
           />
         </Portal>
       </div>
