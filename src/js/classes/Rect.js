@@ -33,7 +33,7 @@ export default class Rect
     return this.originLeft + this.width;
   }
 
-  createCenterRect(width, height){
+  getCenterRect(width, height){
     const center = {
       x: this.left + (this.width / 2),
       y: this.top + (this.height / 2),
@@ -77,7 +77,7 @@ export default class Rect
     return result
   }
 
-  toObject(){
+  dump(){
     return {
       top: this.top,
       left: this.left,
@@ -91,6 +91,39 @@ export default class Rect
       originRight: this.originRight,
       transformX: this.transformX,
       transformY: this.transformY,
+    }
+  }
+
+  getRelativeRect(rect, position){
+    switch(position){
+      case 'right-bottom':
+        return rect.clone().transform(
+          this.left - rect.originLeft,
+          this.bottom - rect.originTop
+        )
+      case 'left-bottom':
+        return rect.clone().transform(
+          this.right - rect.originRight,
+          this.bottom - rect.originTop
+        )
+      case 'left-top':
+        return rect.clone().transform(
+          this.right - rect.originRight,
+          this.top - rect.originBottom
+        )
+      case 'right-top':
+        return rect.clone().transform(
+          this.left - rect.originLeft,
+          this.top - rect.originBottom
+        )
+      case 'center':
+        const expectedRect = this.getCenterRect(rect.width, rect.height)
+        return rect.clone().transform(
+          expectedRect.left - rect.originLeft,
+          expectedRect.top - rect.originTop
+        )
+      default:
+        throw 'Illegal positionKey `' + position + '` is specified';
     }
   }
 }

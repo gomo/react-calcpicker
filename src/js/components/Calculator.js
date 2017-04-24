@@ -18,49 +18,6 @@ export default class Calculator extends Component
     window.onresize = () => this.adjustPosition();
   }
 
-  getNewCalcRect(positionKey, windowRect, buttonRect, calcRect){
-    switch(positionKey){
-      case 'right-bottom':
-        return calcRect.clone().transform(
-          buttonRect.left - calcRect.originLeft,
-          buttonRect.bottom - calcRect.originTop
-        )
-      case 'left-bottom':
-        return calcRect.clone().transform(
-          buttonRect.right - calcRect.originRight,
-          buttonRect.bottom - calcRect.originTop
-        )
-      case 'left-top':
-        return calcRect.clone().transform(
-          buttonRect.right - calcRect.originRight,
-          buttonRect.top - calcRect.originBottom
-        )
-      case 'right-top':
-        return calcRect.clone().transform(
-          buttonRect.left - calcRect.originLeft,
-          buttonRect.top - calcRect.originBottom
-        )
-      case 'window-center':
-        const expectedRect = windowRect.createCenterRect(calcRect.width, calcRect.height)
-        return calcRect.clone().transform(
-          expectedRect.left - calcRect.originLeft,
-          expectedRect.top - calcRect.originTop
-        )
-      default:
-        throw 'Illegal positionKey `' + positionKey + '` is specified';
-    }
-  }
-
-  normalizeRect(rect, baseRect){
-    if(baseRect){
-      rect.left = baseRect.left + rect.x;
-      rect.top = baseRect.top + rect.y;
-    }
-    rect.right = rect.left + rect.width;
-    rect.bottom = rect.top + rect.height;
-    return rect;
-  }
-
   adjustPosition(){
     if(this.refs.calculator){
       const windowRect = new Rect(
@@ -76,7 +33,7 @@ export default class Calculator extends Component
       let newCalcRect = undefined;
       for (var i = 0; i < this.props.positions.length; i++) {
         const posKey = this.props.positions[i]
-        const rect = this.getNewCalcRect(posKey, windowRect, buttonRect, calcRect)
+        const rect = buttonRect.getRelativeRect(calcRect, posKey)
         if(windowRect.contains(rect)){
           newCalcRect = rect;
           break;
@@ -84,7 +41,7 @@ export default class Calculator extends Component
       }
 
       if(!newCalcRect){
-        newCalcRect = this.getNewCalcRect('window-center', windowRect, buttonRect, calcRect);
+        newCalcRect = windowRect.getRelativeRect(calcRect, 'center')
       }
 
       this.setState({
