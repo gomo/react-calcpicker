@@ -20,13 +20,7 @@ export default class Calculator extends Component
 
   adjustPosition(){
     if(this.refs.calculator){
-      const windowRect = new Rect(
-        window.pageYOffset || document.documentElement.scrollTop,
-        window.pageXOffset || document.documentElement.scrollLeft,
-        document.documentElement.clientWidth,
-        document.documentElement.clientHeight,
-      )
-
+      const windowRect = Rect.createWithWindow()
       const buttonRect = Rect.createWithElement(this.props.button);
       const calcRect = Rect.createWithElement(this.refs.calculator, this.state.x, this.state.y);
 

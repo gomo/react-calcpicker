@@ -150,3 +150,12 @@ Rect.createWithElement = (elem, transformX = 0, transformY = 0) => {
     transformY
   )
 }
+
+Rect.createWithWindow = () => {
+  return new Rect(
+    window.pageYOffset || document.documentElement.scrollTop,
+    window.pageXOffset || document.documentElement.scrollLeft,
+    document.documentElement.clientWidth,
+    document.documentElement.clientHeight,
+  )
+}
