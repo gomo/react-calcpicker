@@ -96,27 +96,27 @@ export default class Rect
 
   getRelativeRect(rect, position){
     switch(position){
-      case 'right-bottom':
+      case Rect.RIGHT_BOTTOM:
         return rect.clone().transform(
           this.left - rect.originLeft,
           this.bottom - rect.originTop
         )
-      case 'left-bottom':
+      case Rect.LEFT_BOTTOM:
         return rect.clone().transform(
           this.right - rect.originRight,
           this.bottom - rect.originTop
         )
-      case 'left-top':
+      case Rect.LEFT_TOP:
         return rect.clone().transform(
           this.right - rect.originRight,
           this.top - rect.originBottom
         )
-      case 'right-top':
+      case Rect.RIGHT_TOP:
         return rect.clone().transform(
           this.left - rect.originLeft,
           this.top - rect.originBottom
         )
-      case 'center':
+      case Rect.CENTER:
         const expectedRect = this.getCenterRect(rect.width, rect.height)
         return rect.clone().transform(
           expectedRect.left - rect.originLeft,
@@ -159,3 +159,38 @@ Rect.createWithWindow = () => {
     document.documentElement.clientHeight,
   )
 }
+
+Object.defineProperty(Rect, 'RIGHT_TOP', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "RIGHT_TOP"
+});
+
+Object.defineProperty(Rect, 'LEFT_TOP', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "LEFT_TOP"
+});
+
+Object.defineProperty(Rect, 'RIGHT_BOTTOM', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "RIGHT_BOTTOM"
+});
+
+Object.defineProperty(Rect, 'LEFT_BOTTOM', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "LEFT_BOTTOM"
+});
+
+Object.defineProperty(Rect, 'CENTER', {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "CENTER"
+});

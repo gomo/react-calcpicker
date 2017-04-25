@@ -35,7 +35,7 @@ export default class Calculator extends Component
       }
 
       if(!newCalcRect){
-        newCalcRect = windowRect.getRelativeRect(calcRect, 'center')
+        newCalcRect = windowRect.getRelativeRect(calcRect, Rect.CENTER)
       }
 
       this.setState({
