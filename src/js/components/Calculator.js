@@ -8,9 +8,11 @@ export default class Calculator extends Component
   constructor(props) {
     super(props);
     this.state = {
+      display: props.initialAmount,
       amount: props.initialAmount,
+      appendMode: false,
       format: '0,0[.]0[000000000]',
-      operator: ' ',
+      operator: undefined,
       x: 0,
       y: 0,
     }
@@ -45,6 +47,74 @@ export default class Calculator extends Component
     }
   }
 
+  inputNumber(number){
+    if(this.state.appendMode){
+      this.setState({
+        display: this.state.display + number,
+      })
+    } else {
+      this.setState({
+        appendMode: true,
+        display: number,
+      })
+    }
+  }
+
+  onClickNumber(number){
+    this.inputNumber(number)
+  }
+
+  culc(left, op, right){
+    return
+  }
+
+  execEnter(callback = () => {}){
+    let display = this.state.display;
+    let amount = this.state.amount;
+    if(this.state.operator){
+      display = eval(amount + this.state.operator + display)
+    }
+
+    amount = display;
+
+    this.setState({
+      appendMode: false,
+      operator: undefined,
+      display: display,
+      amount: amount
+    }, callback)
+  }
+
+  onClickEnter(){
+    this.execEnter();
+  }
+
+  onClickOperator(operator){
+    this.execEnter(() => {
+      this.setState({
+        appendMode: false,
+        operator: operator,
+      })
+    })
+  }
+
+  onClickDoubleZero(){
+    this.inputNumber('00')
+  }
+
+  clear(){
+    this.setState({
+      display: '0'
+    })
+  }
+
+  allClear(){
+    this.setState({
+      display: '0',
+      amount: '0',
+    })
+  }
+
   componentDidMount(){
     this.adjustPosition()
   }
@@ -58,34 +128,36 @@ export default class Calculator extends Component
         </div>
         <div className="react-currency-calculator__calculator-display">
           <div className="react-currency-calculator__calculator-display-operator">{this.state.operator}</div>
-          <div className="react-currency-calculator__calculator-display-number">{numeral(this.state.amount).format(this.state.format)}</div>
+          <div className="react-currency-calculator__calculator-display-number">
+            {numeral(this.state.display).format(this.state.format)}
+          </div>
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="clear" display="AC" onClick={() => this.allClear()} />
           <Button classType="clear" display="C" onClick={() => this.clear()} />
           <Button classType="func" display="%" onClick={() => this.onClickPercent()} />
-          <Button classType="func" display="÷" onClick={() => this.onClickDiv()} />
+          <Button classType="func" display="÷" onClick={display => this.onClickOperator('/')} />
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="number" display="7" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="8" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="9" onClick={display => this.onClickNumber(display)} />
-          <Button classType="func" display="×" onClick={() => this.onClickMulti()} />
+          <Button classType="func" display="×" onClick={display => this.onClickOperator('*')} />
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="number" display="4" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="5" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="6" onClick={display => this.onClickNumber(display)} />
-          <Button classType="func" display="-" onClick={() => this.onClickSub()} />
+          <Button classType="func" display="-" onClick={display => this.onClickOperator('-')} />
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="number" display="1" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="2" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="3" onClick={display => this.onClickNumber(display)} />
-          <Button classType="func" display="+" onClick={() => this.onClickAdd()} />
+          <Button classType="func" display="+" onClick={display => this.onClickOperator('+')} />
         </div>
         <div className="react-currency-calculator__calculator-buttons">
-          <Button classType="number" display="0" onClick={() => this.onClickZero()} />
+          <Button classType="number" display="0" onClick={display => this.onClickNumber(display)} />
           <Button classType="number" display="00" onClick={() => this.onClickDoubleZero()} />
           <Button classType="number" display={locale.delimiters.decimal} onClick={() => this.onClickDecimal()} />
           <Button classType="enter" display="=" onClick={() => this.onClickEnter()} />
