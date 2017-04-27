@@ -92,7 +92,7 @@ export default class Calculator extends Component
 
         return left * right
       default:
-        throw 'Invalid operator ' + operator ' specified.';
+        throw 'Invalid operator ' + operator + ' specified.';
     }
   }
 
