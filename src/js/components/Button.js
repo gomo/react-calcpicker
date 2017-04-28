@@ -1,9 +1,7 @@
-import {Component} from 'react'
-import numeral from 'numeral'
-import Button from './Button'
+import React from 'react'
 import classNames from 'class-names'
 
-export default class Calculator extends Component
+export default class Button extends React.Component
 {
   constructor(props) {
     super(props);
@@ -15,9 +13,32 @@ export default class Calculator extends Component
     return false;
   }
 
+  getButtonClass(){
+    if(Button.symbolMap[this.props.display]){
+      return Button.symbolMap[this.props.display]
+    } else {
+      return '_' + this.props.display
+    }
+  }
+
   render(){
     return (
-      <button className={classNames("react-currency-calculator__calculator-button react-currency-calculator__calculator-button-" + this.props.classType)} onClick={e => this.onClick(e)}>{this.props.display}</button>
+      <button
+        className={classNames("react-currency-calculator__calculator-button react-currency-calculator__calculator-button-" + this.props.classType, this.getButtonClass())}
+        onClick={e => this.onClick(e)}
+      >
+        {this.props.display}
+      </button>
     );
   }
+}
+
+Button.symbolMap = {
+  '-': 'minus',
+  '+': 'plus',
+  '÷': 'division',
+  '×': 'times',
+  '=': 'equal',
+  '%': 'percent',
+  '.': 'decimal',
 }

@@ -129,6 +129,9 @@ export default class Rect
 }
 
 Rect.createWithElement = (elem, transformX = 0, transformY = 0) => {
+  if(!elem){
+    return new Rect(0,0,0,0)
+  }
   const boundingRect = elem.getBoundingClientRect();
 
 

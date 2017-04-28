@@ -1,9 +1,9 @@
-import {Component} from 'react'
+import React from 'react'
 import numeral from 'numeral'
 import Button from './Button'
 import Rect from '../classes/Rect'
 
-export default class Calculator extends Component
+export default class Calculator extends React.Component
 {
   constructor(props) {
     super(props);

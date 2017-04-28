@@ -1,10 +1,10 @@
-import {Component} from 'react'
+import React from 'react'
 import numeral from 'numeral'
 import 'numeral/locales'
 import Calculator from './Calculator'
 import Portal from 'react-portal'
 
-export default class App extends Component
+export default class App extends React.Component
 {
   constructor(props) {
     super(props);
