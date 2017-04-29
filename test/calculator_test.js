@@ -17,7 +17,7 @@ const createCalculator = () => {
 const clickButton = (calc, ...symbols) => {
   symbols.forEach(symbol => {
     const className = Button.symbolMap[symbol] ? Button.symbolMap[symbol] : '_' + symbol;
-    calc.find('.react-currency-calculator__calculator-button.' + className).simulate('click')
+    calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button.' + className).simulate('click')
   })
 }
 
@@ -77,7 +77,7 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'display') === "123456789000")
   })
 
-  it('should calculate the addition with the plus key.', function () {
+  it('should calculate the addition with `+` key.', function () {
     const calc = createCalculator()
 
     assert(getNumberState(calc, 'amount') === "0")
@@ -99,6 +99,81 @@ describe('Calculator', () => {
     clickButton(calc, '=')
     assert(getNumberState(calc, 'display') === '107')
     assert(getNumberState(calc, 'amount') === '107')
+
+  })
+
+  it('should calculate the multiplication with `×` key.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+
+    clickButton(calc, '2', '×', '2', '=');
+    assert(getNumberState(calc, 'amount') === '4')
+
+    clickButton(calc, '×', '5')
+    assert(getNumberState(calc, 'display') === "5")
+    assert(getNumberState(calc, 'amount') === '4')
+    clickButton(calc, '×')
+    assert(getNumberState(calc, 'display') === '20')
+    assert(getNumberState(calc, 'amount') === '20')
+
+    clickButton(calc, '1', '00')
+    assert(getNumberState(calc, 'display') === "100")
+    assert(getNumberState(calc, 'amount') === '20')
+    clickButton(calc, '=')
+    assert(getNumberState(calc, 'display') === '2000')
+    assert(getNumberState(calc, 'amount') === '2000')
+
+  })
+
+  it('should calculate the subtraction with `-` key.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+
+    clickButton(calc, '1', '00', '-', '2', '=');
+    assert(getNumberState(calc, 'amount') === '98')
+
+    clickButton(calc, '-', '1', '2')
+    assert(getNumberState(calc, 'display') === "12")
+    assert(getNumberState(calc, 'amount') === '98')
+    clickButton(calc, '-')
+    assert(getNumberState(calc, 'display') === '86')
+    assert(getNumberState(calc, 'amount') === '86')
+
+    clickButton(calc, '1', '00')
+    assert(getNumberState(calc, 'display') === "100")
+    assert(getNumberState(calc, 'amount') === '86')
+    clickButton(calc, '=')
+    assert(getNumberState(calc, 'display') === '-14')
+    assert(getNumberState(calc, 'amount') === '-14')
+
+  })
+
+  it('should calculate the division with `÷` key.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+
+    clickButton(calc, '1', '2', '0', '÷', '2', '=');
+    assert(getNumberState(calc, 'amount') === '60')
+
+    clickButton(calc, '÷', '1', '2')
+    assert(getNumberState(calc, 'display') === "12")
+    assert(getNumberState(calc, 'amount') === '60')
+    clickButton(calc, '÷')
+    assert(getNumberState(calc, 'display') === '5')
+    assert(getNumberState(calc, 'amount') === '5')
+
+    clickButton(calc, '1', '00')
+    assert(getNumberState(calc, 'display') === "100")
+    assert(getNumberState(calc, 'amount') === '5')
+    clickButton(calc, '=')
+    assert(getNumberState(calc, 'display') === '0.05')
+    assert(getNumberState(calc, 'amount') === '0.05')
 
   })
 })
