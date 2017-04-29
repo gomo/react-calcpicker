@@ -126,6 +126,10 @@ export default class Calculator extends React.Component
           operator: operator,
         })
       })
+    } else {
+      this.setState({
+        operator: operator,
+      })
     }
   }
 

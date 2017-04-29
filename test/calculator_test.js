@@ -82,6 +82,7 @@ describe('Calculator', () => {
 
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
 
     clickButton(calc, '1', '+', '1', '=');
     assert(getNumberState(calc, 'amount') === '2')
@@ -92,6 +93,7 @@ describe('Calculator', () => {
     clickButton(calc, '+')
     assert(getNumberState(calc, 'display') === '7')
     assert(getNumberState(calc, 'amount') === '7')
+    assert(calc.state('operator') === '+')
 
     clickButton(calc, '1', '00')
     assert(getNumberState(calc, 'display') === "100")
@@ -107,6 +109,7 @@ describe('Calculator', () => {
 
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
 
     clickButton(calc, '2', '×', '2', '=');
     assert(getNumberState(calc, 'amount') === '4')
@@ -117,6 +120,7 @@ describe('Calculator', () => {
     clickButton(calc, '×')
     assert(getNumberState(calc, 'display') === '20')
     assert(getNumberState(calc, 'amount') === '20')
+    assert(calc.state('operator') === '×')
 
     clickButton(calc, '1', '00')
     assert(getNumberState(calc, 'display') === "100")
@@ -132,6 +136,7 @@ describe('Calculator', () => {
 
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
 
     clickButton(calc, '1', '00', '-', '2', '=');
     assert(getNumberState(calc, 'amount') === '98')
@@ -142,6 +147,7 @@ describe('Calculator', () => {
     clickButton(calc, '-')
     assert(getNumberState(calc, 'display') === '86')
     assert(getNumberState(calc, 'amount') === '86')
+    assert(calc.state('operator') === '-')
 
     clickButton(calc, '1', '00')
     assert(getNumberState(calc, 'display') === "100")
@@ -157,6 +163,7 @@ describe('Calculator', () => {
 
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
 
     clickButton(calc, '1', '2', '0', '÷', '2', '=');
     assert(getNumberState(calc, 'amount') === '60')
@@ -167,6 +174,7 @@ describe('Calculator', () => {
     clickButton(calc, '÷')
     assert(getNumberState(calc, 'display') === '5')
     assert(getNumberState(calc, 'amount') === '5')
+    assert(calc.state('operator') === '÷')
 
     clickButton(calc, '1', '00')
     assert(getNumberState(calc, 'display') === "100")
@@ -175,5 +183,38 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'display') === '0.05')
     assert(getNumberState(calc, 'amount') === '0.05')
 
+  })
+
+  it('should clear only the display with `C` key, and all clear with `AC` key.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', 'C');
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+
+    clickButton(calc, '1', '+', '1', '=');
+    assert(getNumberState(calc, 'display') === "2")
+    assert(getNumberState(calc, 'amount') === '2')
+
+    clickButton(calc, '×', '1', '00');
+    assert(getNumberState(calc, 'display') === "100")
+    assert(getNumberState(calc, 'amount') === '2')
+
+    clickButton(calc, 'C');
+    assert(getNumberState(calc, 'display') === "0")
+    assert(getNumberState(calc, 'amount') === '2')
+
+    clickButton(calc, '+', '2', '00', '=');
+    assert(getNumberState(calc, 'display') === "202")
+    assert(getNumberState(calc, 'amount') === '202')
+
+    clickButton(calc, '×', '2', 'AC');
+    assert(getNumberState(calc, 'display') === '0')
+    assert(getNumberState(calc, 'amount') === '0')
+    assert(calc.state('operator') === undefined)
   })
 })
