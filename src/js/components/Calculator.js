@@ -111,6 +111,7 @@ export default class Calculator extends React.Component
       unit: undefined,
       display: display,
       amount: amount,
+      appendMode: false,
     }, callback)
   }
 

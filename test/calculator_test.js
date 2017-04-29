@@ -271,4 +271,79 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'amount') === "99.2")
     assert(getNumberState(calc, 'display') === "99.2")
   })
+
+  it('should be able to change the operator halfway.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', '00', '+', '-', '9', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '+', '-', '÷', '2', '=');
+    assert(getNumberState(calc, 'amount') === "50")
+    assert(getNumberState(calc, 'display') === "50")
+  })
+
+  it('should reset the input of the number after calculation.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', '00', '+', '9', '=');
+    assert(getNumberState(calc, 'amount') === "109")
+    assert(getNumberState(calc, 'display') === "109")
+
+    clickButton(calc, '1');
+    assert(getNumberState(calc, 'amount') === "109")
+    assert(getNumberState(calc, 'display') === "1")
+    clickButton(calc, '+', '1', '=');
+    assert(getNumberState(calc, 'amount') === "2")
+    assert(getNumberState(calc, 'display') === "2")
+
+    clickButton(calc, '1', '+', '1', '+', '3');
+    assert(getNumberState(calc, 'amount') === "2")
+    assert(getNumberState(calc, 'display') === "3")
+    clickButton(calc, '=');
+    assert(getNumberState(calc, 'amount') === "5")
+    assert(getNumberState(calc, 'display') === "5")
+  })
+
+  it('should do the correct calculation even if push many times the operator.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', '00', '+', '+', '+', '-', '9', '=', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '×', '×', '×', '-', '9', '=', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '-', '-', '-', '-', '9', '=', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '÷', '÷', '÷', '-', '9', '=', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '÷', '÷', '÷', '-', '9', '%', '%','=', '=');
+    assert(getNumberState(calc, 'amount') === "91")
+    assert(getNumberState(calc, 'display') === "91")
+  })
 })
