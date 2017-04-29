@@ -217,4 +217,31 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'amount') === '0')
     assert(calc.state('operator') === undefined)
   })
+
+  it('should calculate percent correctly.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', '00', '+', '8', '%', '=');
+    assert(getNumberState(calc, 'amount') === "108")
+    assert(getNumberState(calc, 'display') === "108")
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '00', '-', '1', '0', '%', '=');
+    assert(getNumberState(calc, 'amount') === "90")
+    assert(getNumberState(calc, 'display') === "90")
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '00', '×', '3', '0', '%', '=');
+    assert(getNumberState(calc, 'amount') === "30")
+    assert(getNumberState(calc, 'display') === "30")
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '00', '÷', '8', '0', '%', '=');
+    assert(getNumberState(calc, 'amount') === "125")
+    assert(getNumberState(calc, 'display') === "125")
+  })
 })
