@@ -244,4 +244,31 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'amount') === "125")
     assert(getNumberState(calc, 'display') === "125")
   })
+
+  it('should calculate the decimal correctly.', function () {
+    const calc = createCalculator()
+
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('operator') === undefined)
+
+    clickButton(calc, '1', '00', '+', '0', '.', '3', '=');
+    assert(getNumberState(calc, 'amount') === "100.3")
+    assert(getNumberState(calc, 'display') === "100.3")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '×', '0', '.', '2', '=')
+    assert(getNumberState(calc, 'amount') === "20")
+    assert(getNumberState(calc, 'display') === "20")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '÷', '0', '.', '4', '=')
+    assert(getNumberState(calc, 'amount') === "250")
+    assert(getNumberState(calc, 'display') === "250")
+
+    clickButton(calc, 'AC')
+    clickButton(calc, '1', '00', '-', '0', '.', '8', '=')
+    assert(getNumberState(calc, 'amount') === "99.2")
+    assert(getNumberState(calc, 'display') === "99.2")
+  })
 })

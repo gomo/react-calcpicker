@@ -101,7 +101,7 @@ export default class Calculator extends React.Component
     let amount = this.state.amount;
 
     if(this.state.operator){
-      display = this.calc(parseInt(amount, 10), this.state.operator, parseInt(display, 10));
+      display = this.calc(parseFloat(amount, 10), this.state.operator, parseFloat(display, 10));
     }
 
     amount = display;
