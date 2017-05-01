@@ -20,6 +20,50 @@ export default class App extends React.Component
         y: e.clientY + (window.pageYOffset || document.documentElement.scrollTop)
       })
     };
+
+    window.onkeydown = (e) => {
+      if(this.state.openCalculator){
+        switch (e.key) {
+          case '0':
+          case '1':
+          case '2':
+          case '3':
+          case '4':
+          case '5':
+          case '6':
+          case '7':
+          case '8':
+          case '9':
+            this.refs.calculator.inputNumber(e.key)
+            break;
+          case '+':
+          case '-':
+            this.refs.calculator.onClickOperator(e.key)
+            break;
+          case '/':
+            this.refs.calculator.onClickOperator('÷')
+            break;
+          case '*':
+            this.refs.calculator.onClickOperator('×')
+            break;
+          case '%':
+            this.refs.calculator.onClickPercent()
+            break;
+          case '=':
+          case 'Enter':
+            this.refs.calculator.onClickEnter()
+            break;
+          case 'Clear':
+            this.refs.calculator.clear()
+            break;
+          case 'Backspace':
+            this.refs.calculator.delete()
+            break;
+          default:
+
+        }
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -28,13 +72,9 @@ export default class App extends React.Component
     }
   }
 
-  toggleCalculator(){
-    this.setState({openCalculator: !this.state.openCalculator});
-  }
-
   onClickAmount(e){
     e.preventDefault();
-    this.toggleCalculator()
+    this.setState({openCalculator: true});
     return false;
   }
 
@@ -54,8 +94,9 @@ export default class App extends React.Component
         </button>
         <Portal closeOnEsc closeOnOutsideClick isOpened={this.state.openCalculator} onClose={() => this.onCloseCalculator()}>
           <Calculator
+            ref='calculator'
             initialAmount={this.state.amount}
-            onClickClose={() => this.toggleCalculator()}
+            onClickClose={() => this.setState({openCalculator: false})}
             button={this.refs.button}
             positions={this.props.positions}
           />

@@ -166,6 +166,14 @@ export default class Calculator extends React.Component
     this.adjustPosition()
   }
 
+  delete(){
+    let value = this.state.display.toString()
+    value = value.substr(0, value.length - 1);
+    this.setState({
+      display: value,
+    })
+  }
+
   render(){
     const locale = numeral.localeData();
     return (
