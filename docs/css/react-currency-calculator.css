@@ -16,6 +16,10 @@
   position: absolute;
 }
 
+.react-currency-calculator__calculator-buttons {
+  position: relative;
+}
+
 .react-currency-calculator__calculator-button {
   display: inline-block;
   width: 48px;
@@ -35,6 +39,20 @@
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
+}
+
+.react-currency-calculator__calculator-button-2h {
+  position: absolute;
+  height: 70px;
+  top: -38px;
+}
+
+.react-currency-calculator__calculator-button-2w {
+  width: 102px;
+}
+
+.react-currency-calculator__calculator-button-3w {
+  width: 156px;
 }
 
 .react-currency-calculator__calculator-button-number {

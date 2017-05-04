@@ -24,7 +24,11 @@ export default class Button extends React.Component
   render(){
     return (
       <button
-        className={classNames("react-currency-calculator__calculator-button react-currency-calculator__calculator-button-" + this.props.classType, this.getButtonClass())}
+        className={classNames(
+          "react-currency-calculator__calculator-button react-currency-calculator__calculator-button-" + this.props.classType,
+          this.getButtonClass(),
+          this.props.className
+        )}
         onClick={e => this.onClick(e)}
       >
         {this.props.display}
@@ -41,4 +45,5 @@ Button.symbolMap = {
   '=': 'equal',
   '%': 'percent',
   '.': 'decimal',
+  '←': 'bs',
 }

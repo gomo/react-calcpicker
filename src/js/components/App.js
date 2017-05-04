@@ -54,7 +54,7 @@ export default class App extends React.Component
             this.refs.calculator.onClickEnter()
             break;
           case 'Clear':
-            this.refs.calculator.clear()
+            this.refs.calculator.allClear()
             break;
           case 'Backspace':
             this.refs.calculator.delete()

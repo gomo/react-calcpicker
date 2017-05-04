@@ -146,6 +146,10 @@ export default class Calculator extends React.Component
     this.inputNumber('00')
   }
 
+  /**
+   * Although the clear key has been removed due to space reasons, the function is left behind.
+   * <Button classType="clear" display="C" onClick={() => this.clear()} />
+   */
   clear(){
     this.setState({
       display: '0',
@@ -170,7 +174,7 @@ export default class Calculator extends React.Component
     let value = this.state.display.toString()
     value = value.substr(0, value.length - 1);
     this.setState({
-      display: value,
+      display: !value ? 0 : value,
     })
   }
 
@@ -189,7 +193,7 @@ export default class Calculator extends React.Component
         </div>
         <div className="react-currency-calculator__calculator-buttons">
           <Button classType="clear" display="AC" onClick={() => this.allClear()} />
-          <Button classType="clear" display="C" onClick={() => this.clear()} />
+          <Button classType="clear" display="←" onClick={() => this.delete()} />
           <Button classType="unit" display="%" onClick={() => this.onClickPercent()} />
           <Button classType="func" display="÷" onClick={display => this.onClickOperator(display)} />
         </div>

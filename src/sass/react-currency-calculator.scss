@@ -2,6 +2,8 @@
 @import 'mixin';
 
 $gridMargin: 3px;
+$buttonHeight: 32px;
+$buttonWidth: 48px;
 
 .react-currency-calculator{
   display: inline-block;
@@ -17,10 +19,14 @@ $gridMargin: 3px;
   position: absolute;
 }
 
+.react-currency-calculator__calculator-buttons{
+  position: relative;
+}
+
 .react-currency-calculator__calculator-button{
   display: inline-block;
-  width: 48px;
-  height: 32px;
+  width: $buttonWidth;
+  height: $buttonHeight;
   padding: 0;
   font-size: 16px;
   margin: $gridMargin;
@@ -31,6 +37,20 @@ $gridMargin: 3px;
   @include border-radius(4px);
   @include user-select(none);
   cursor: pointer;
+}
+
+.react-currency-calculator__calculator-button-2h{
+  position: absolute;
+  height: (($buttonHeight * 2) + ($gridMargin * 2));
+  top: -($buttonHeight + ($gridMargin * 2));
+}
+
+.react-currency-calculator__calculator-button-2w{
+  width: (($buttonWidth * 2) + ($gridMargin * 2));
+}
+
+.react-currency-calculator__calculator-button-3w{
+  width: (($buttonWidth * 3) + ($gridMargin * 4));
 }
 
 .react-currency-calculator__calculator-button-number{

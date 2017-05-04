@@ -185,14 +185,14 @@ describe('Calculator', () => {
 
   })
 
-  it('should clear only the display with `C` key, and all clear with `AC` key.', function () {
+  it('should erase one number with `←` key, and all clear with `AC` key.', function () {
     const calc = createCalculator()
 
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
     assert(calc.state('operator') === undefined)
 
-    clickButton(calc, '1', 'C');
+    clickButton(calc, '1', '←');
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
 
@@ -204,13 +204,13 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'display') === "100")
     assert(getNumberState(calc, 'amount') === '2')
 
-    clickButton(calc, 'C');
-    assert(getNumberState(calc, 'display') === "0")
+    clickButton(calc, '←');
+    assert(getNumberState(calc, 'display') === "10")
     assert(getNumberState(calc, 'amount') === '2')
 
     clickButton(calc, '+', '2', '00', '=');
-    assert(getNumberState(calc, 'display') === "202")
-    assert(getNumberState(calc, 'amount') === '202')
+    assert(getNumberState(calc, 'display') === "220")
+    assert(getNumberState(calc, 'amount') === '220')
 
     clickButton(calc, '×', '2', 'AC');
     assert(getNumberState(calc, 'display') === '0')
