@@ -99,6 +99,7 @@ export default class App extends React.Component
             onClickClose={() => this.setState({openCalculator: false})}
             button={this.refs.button}
             positions={this.props.positions}
+            buttons={this.props.buttons}
           />
         </Portal>
       </div>

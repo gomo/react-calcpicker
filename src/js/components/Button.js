@@ -13,20 +13,30 @@ export default class Button extends React.Component
     return false;
   }
 
-  getButtonClass(){
-    if(Button.symbolMap[this.props.display]){
-      return Button.symbolMap[this.props.display]
-    } else {
-      return '_' + this.props.display
+  getSizeClass(){
+    if(!this.props.size){
+      return;
     }
+
+    const classNames = [];
+    if(this.props.size.width){
+      classNames.push("react-currency-calculator__calculator-button-" + this.props.size.width + 'w')
+    }
+
+    if(this.props.size.height){
+      classNames.push("react-currency-calculator__calculator-button-" + this.props.size.height + 'h')
+    }
+
+    return classNames;
   }
 
   render(){
     return (
       <button
         className={classNames(
-          "react-currency-calculator__calculator-button react-currency-calculator__calculator-button-" + this.props.classType,
-          this.getButtonClass(),
+          "react-currency-calculator__calculator-button",
+          this.props.style ? "react-currency-calculator__calculator-button-" + this.props.style : undefined,
+          this.getSizeClass(),
           this.props.className
         )}
         onClick={e => this.onClick(e)}
@@ -35,15 +45,4 @@ export default class Button extends React.Component
       </button>
     );
   }
-}
-
-Button.symbolMap = {
-  '-': 'minus',
-  '+': 'plus',
-  '÷': 'division',
-  '×': 'times',
-  '=': 'equal',
-  '%': 'percent',
-  '.': 'decimal',
-  '←': 'bs',
 }
