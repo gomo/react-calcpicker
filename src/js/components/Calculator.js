@@ -13,7 +13,7 @@ export default class Calculator extends React.Component
       appendMode: false,
       format: '0,0[.]0[000000000]',
       operator: {},
-      unit: undefined,
+      unit: {},
       x: 0,
       y: 0,
     }
@@ -64,25 +64,25 @@ export default class Calculator extends React.Component
   calc(left, operator, right){
     switch (operator) {
       case '+':
-        if(this.state.unit == '%'){
+        if(this.state.unit.value == '%'){
           right = left * (right / 100)
         }
 
         return  left + right;
       case '-':
-        if(this.state.unit == '%'){
+        if(this.state.unit.value == '%'){
           right = left * (right / 100)
         }
 
         return  left - right;
       case '/':
-        if(this.state.unit == '%'){
+        if(this.state.unit.value == '%'){
           right = right / 100
         }
 
         return left / right
       case '*':
-        if(this.state.unit == '%'){
+        if(this.state.unit.value == '%'){
           right = right / 100
         }
 
@@ -104,21 +104,21 @@ export default class Calculator extends React.Component
 
     this.setState({
       operator: {},
-      unit: undefined,
+      unit: {},
       display: display,
       amount: amount,
       appendMode: false,
     }, callback)
   }
 
-  inputOperator(operator, display){
+  inputOperator(operator, btnProps){
     if(this.state.appendMode){
       this.execute(() => {
         this.setState({
           appendMode: false,
           operator: {
             value: operator,
-            display: display,
+            display: btnProps.display,
           },
         })
       })
@@ -126,7 +126,7 @@ export default class Calculator extends React.Component
       this.setState({
         operator: {
           value: operator,
-          display: display,
+          display: btnProps.display,
         },
       })
     }
@@ -138,8 +138,15 @@ export default class Calculator extends React.Component
     }
   }
 
-  inputPercent(){
-    this.setState({unit: '%'})
+  inputPercent(btnProps){
+    if(this.state.operator.value){
+      this.setState({unit: {
+        value:'%',
+        display: btnProps.display
+      }})
+    } else {
+      this.setState({display: this.state.display / 100})
+    }
   }
 
   clear(){
@@ -147,6 +154,7 @@ export default class Calculator extends React.Component
       this.setState({
         display: '0',
         appendMode: false,
+        unit: {},
       })
     }
   }
@@ -157,16 +165,20 @@ export default class Calculator extends React.Component
       amount: '0',
       operator: {},
       appendMode: false,
+      unit: {},
     })
   }
 
   delete(){
     if(this.state.appendMode){
+      const newState = {}
       let value = this.state.display.toString()
+      if(value === '0'){
+        newState['unit'] = {}
+      }
       value = value.substr(0, value.length - 1);
-      this.setState({
-        display: !value ? 0 : value,
-      })
+      newState['display'] = !value ? 0 : value;
+      this.setState(newState)
     }
   }
 
@@ -184,14 +196,14 @@ export default class Calculator extends React.Component
         <div className="react-currency-calculator__calculator-display">
           <div className="react-currency-calculator__calculator-display-operator">{this.state.operator.display}</div>
           <div className="react-currency-calculator__calculator-display-number">
-            {numeral(this.state.display).format(this.state.format)}{this.state.unit}
+            {numeral(this.state.display).format(this.state.format)}{this.state.unit.display}
           </div>
         </div>
         {this.props.buttons.map((row, rowKey) => {
           return (
             <div key={rowKey} className="react-currency-calculator__calculator-buttons">
               {row.map((btn, btnKey) => {
-                return <Button key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={display => btn.action(this, display)} />
+                return <Button key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={display => btn.action(this, btn)} />
               })}
             </div>
           )

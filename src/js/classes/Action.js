@@ -35,20 +35,20 @@ const Action =  {
   decimal: function(calc){
     calc.inputDecimal()
   },
-  percent: function(calc, display){
-    calc.inputPercent(display)
+  percent: function(calc, btnProps){
+    calc.inputPercent(btnProps)
   },
-  plus: function(calc, display){
-    calc.inputOperator('+', display)
+  plus: function(calc, btnProps){
+    calc.inputOperator('+', btnProps)
   },
-  minus: function(calc, display){
-    calc.inputOperator('-', display)
+  minus: function(calc, btnProps){
+    calc.inputOperator('-', btnProps)
   },
-  multiplication: function(calc, display){
-    calc.inputOperator('*', display)
+  multiplication: function(calc, btnProps){
+    calc.inputOperator('*', btnProps)
   },
-  division: function(calc, display){
-    calc.inputOperator('/', display)
+  division: function(calc, btnProps){
+    calc.inputOperator('/', btnProps)
   },
   enter: function(calc){
     calc.execute()

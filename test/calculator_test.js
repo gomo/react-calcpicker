@@ -275,6 +275,20 @@ describe('Calculator', () => {
     clickButton(calc, '1', '+', '2', '=', '←');
     assert(getNumberState(calc, 'amount') === "3")
     assert(getNumberState(calc, 'display') === "3")
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '0', '+', '1', '0', '%');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "10")
+    assert(calc.state('unit').value === '%')
+    clickButton(calc, '←', '←');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('unit').value === '%')
+    clickButton(calc, '←');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('unit').value === undefined)
   })
 
   it('should clear all with `AC` key.', function () {
@@ -310,6 +324,16 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'amount') === "0")
     assert(getNumberState(calc, 'display') === "0")
     assert(calc.state('operator').value === undefined)
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '0', '+', '1', '0', '%');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "10")
+    assert(calc.state('unit').value === '%')
+    clickButton(calc, 'AC');
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('unit').value === undefined)
   })
 
   it('should clear only display with `C` key.', function () {
@@ -348,6 +372,15 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'display') === "20")
     assert(calc.state('operator').value === undefined)
 
+    clickButton(calc, 'AC');
+    clickButton(calc, '1', '0', '+', '1', '0', '%');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "10")
+    assert(calc.state('unit').value === '%')
+    clickButton(calc, 'C');
+    assert(getNumberState(calc, 'amount') === "10")
+    assert(getNumberState(calc, 'display') === "0")
+    assert(calc.state('unit').value === undefined)
   })
 
   it('should calculate percent correctly.', function () {
@@ -357,7 +390,11 @@ describe('Calculator', () => {
     assert(getNumberState(calc, 'display') === "0")
     assert(calc.state('operator').value === undefined)
 
-    clickButton(calc, '1', '00', '+', '8', '%', '=');
+    clickButton(calc, '1', '00', '+', '8', '%');
+    assert(getNumberState(calc, 'amount') === "100")
+    assert(getNumberState(calc, 'display') === "8")
+    assert(calc.state('unit').value === '%')
+    clickButton(calc, '=');
     assert(getNumberState(calc, 'amount') === "108")
     assert(getNumberState(calc, 'display') === "108")
 
@@ -375,6 +412,11 @@ describe('Calculator', () => {
     clickButton(calc, '1', '00', '/', '8', '0', '%', '=');
     assert(getNumberState(calc, 'amount') === "125")
     assert(getNumberState(calc, 'display') === "125")
+
+    clickButton(calc, 'AC');
+    clickButton(calc, '6', '0', '%');
+    assert(getNumberState(calc, 'amount') === "0")
+    assert(getNumberState(calc, 'display') === "0.6")
   })
 
   it('should calculate the decimal correctly.', function () {
