@@ -3,7 +3,6 @@ import assert from 'power-assert'
 import { mount, shallow } from 'enzyme'
 
 import Calculator from '../src/js/components/Calculator'
-// import Button from '../src/js/components/Button'
 import Action from '../src/js/classes/Action'
 
 const createCalculator = () => {
