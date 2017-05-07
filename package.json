@@ -2,7 +2,7 @@
   "name": "react-currency-calculator",
   "version": "1.0.0",
   "description": "The react component of keyboard with calculation function to input currency.",
-  "main": "index.js",
+  "main": "dist/react-currency-calculator.js",
   "scripts": {
     "test": "mocha --require test/setup.js --compilers js:babel-core/register test/"
   },
@@ -29,6 +29,7 @@
     "gulp-clean-css": "^3.0.4",
     "gulp-compass": "^2.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.7",
     "jsdom": "^10.0.0",
     "mocha": "^3.3.0",

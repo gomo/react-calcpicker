@@ -3,8 +3,8 @@ var webpack = require("webpack");
 module.exports = {
   entry: __dirname + '/app.js',
   output: {
-      path: __dirname,
-      filename: '../docs/index.js'
+      path: __dirname + '/../docs/',
+      filename: 'index.js'
   },
   resolve: {
     extensions: ['', ".js", ".jsx", ".es6"]
