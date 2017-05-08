@@ -1,5 +1,5 @@
 import React from 'react'
-import {CurrencyCalculator, Rect, Action} from '../../../dist/react-currency-calculator';
+import {CalcPicker, Rect, Action} from '../../../dist/react-calcpicker';
 export default class DefaultSection extends React.Component
 {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class DefaultSection extends React.Component
   render(){
     return (
       <div className="container">
-        <CurrencyCalculator
+        <CalcPicker
           initialAmount={0}
           currencyFormat={'$0,0[.]00'}
           positions={[Rect.RIGHT_BOTTOM, Rect.RIGHT_TOP, Rect.LEFT_BOTTOM, Rect.LEFT_TOP]}

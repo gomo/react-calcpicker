@@ -59,7 +59,7 @@ const symbolMap = {
 
 const clickButton = (calc, ...symbols) => {
   symbols.forEach(symbol => {
-    const className = '.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button.' + (symbolMap[symbol] ? symbolMap[symbol] : '_' + symbol);
+    const className = '.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button.' + (symbolMap[symbol] ? symbolMap[symbol] : '_' + symbol);
     const button = calc.find(className);
     if(button.nodes.length === 0){
       throw 'Missing ' + className + ' element.';

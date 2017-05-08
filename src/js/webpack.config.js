@@ -1,12 +1,12 @@
 var webpack = require("webpack");
 
 module.exports = {
-  entry: __dirname + '/react-currency-calculator.js',
+  entry: __dirname + '/react-calcpicker.js',
   output: {
       path: __dirname + '/../../dist/',
-      filename: 'react-currency-calculator.js',
+      filename: 'react-calcpicker.js',
       libraryTarget: 'umd',
-      library: 'ReactCurrencyCalculator',
+      library: 'ReactCalcPicker',
   },
   resolve: {
     extensions: ['', ".js", ".jsx", ".es6"]

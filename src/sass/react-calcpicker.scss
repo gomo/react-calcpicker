@@ -5,11 +5,11 @@ $gridMargin: 3px;
 $buttonHeight: 32px;
 $buttonWidth: 48px;
 
-.react-currency-calculator{
+.react-calcpicker{
   display: inline-block;
 }
 
-.react-currency-calculator__calculator{
+.react-calcpicker__calculator{
   border: 1px solid #ccc;
   @include border-radius(6px);
   padding: 10px;
@@ -19,12 +19,12 @@ $buttonWidth: 48px;
   position: absolute;
 }
 
-.react-currency-calculator__calculator-buttons{
+.react-calcpicker__calculator-buttons{
   position: relative;
   height: $buttonHeight + ($gridMargin * 2);
 }
 
-.react-currency-calculator__calculator-button{
+.react-calcpicker__calculator-button{
   display: inline-block;
   width: $buttonWidth;
   height: $buttonHeight;
@@ -40,82 +40,82 @@ $buttonWidth: 48px;
   cursor: pointer;
 }
 
-.react-currency-calculator__calculator-button-2h{
+.react-calcpicker__calculator-button-2h{
   position: absolute;
   height: (($buttonHeight * 2) + ($gridMargin * 2));
   top: -($buttonHeight + ($gridMargin * 2));
 }
 
-.react-currency-calculator__calculator-button-3h{
+.react-calcpicker__calculator-button-3h{
   position: absolute;
   height: (($buttonHeight * 3) + ($gridMargin * 4));
   top: -(($buttonHeight * 2) + ($gridMargin * 4));
 }
 
-.react-currency-calculator__calculator-button-4h{
+.react-calcpicker__calculator-button-4h{
   position: absolute;
   height: (($buttonHeight * 4) + ($gridMargin * 6));
   top: -(($buttonHeight * 3) + ($gridMargin * 6));
 }
 
-.react-currency-calculator__calculator-button-2w{
+.react-calcpicker__calculator-button-2w{
   position: absolute;
   width: (($buttonWidth * 2) + ($gridMargin * 2));
 }
 
-.react-currency-calculator__calculator-button-2w + .react-currency-calculator__calculator-button{
+.react-calcpicker__calculator-button-2w + .react-calcpicker__calculator-button{
   margin-left: (($buttonWidth * 2) + ($gridMargin * 5));
 }
 
-.react-currency-calculator__calculator-button-3w{
+.react-calcpicker__calculator-button-3w{
   position: absolute;
   width: (($buttonWidth * 3) + ($gridMargin * 4));
 }
 
-.react-currency-calculator__calculator-button-3w + .react-currency-calculator__calculator-button{
+.react-calcpicker__calculator-button-3w + .react-calcpicker__calculator-button{
   margin-left: (($buttonWidth * 3) + ($gridMargin * 7));
 }
 
-.react-currency-calculator__calculator-button-4w{
+.react-calcpicker__calculator-button-4w{
   position: absolute;
   width: (($buttonWidth * 4) + ($gridMargin * 6));
 }
 
-.react-currency-calculator__calculator-button-4w + .react-currency-calculator__calculator-button{
+.react-calcpicker__calculator-button-4w + .react-calcpicker__calculator-button{
   margin-left: (($buttonWidth * 4) + ($gridMargin * 9));
 }
 
-.react-currency-calculator__calculator-button-default{
+.react-calcpicker__calculator-button-default{
   color: #222;
   background-color: #fcfcfc;
   border-color: #ccc;
 }
 
-.react-currency-calculator__calculator-button-primary{
+.react-calcpicker__calculator-button-primary{
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
 }
 
-.react-currency-calculator__calculator-button-dark{
+.react-calcpicker__calculator-button-dark{
   color: #fff;
   background-color: #2d415a;
   border-color: #131b25;
 }
 
-.react-currency-calculator__calculator-button-warning{
+.react-calcpicker__calculator-button-warning{
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
 }
 
-.react-currency-calculator__calculator-button-light{
+.react-calcpicker__calculator-button-light{
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
 
-.react-currency-calculator__calculator-button-close{
+.react-calcpicker__calculator-button-close{
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
@@ -123,7 +123,7 @@ $buttonWidth: 48px;
   height: 24px;
 }
 
-.react-currency-calculator__calculator-display{
+.react-calcpicker__calculator-display{
   @include clearfix();
   margin: $gridMargin;
   font-size: 16px;
@@ -135,15 +135,15 @@ $buttonWidth: 48px;
   line-height: 16px;
 }
 
-.react-currency-calculator__calculator-display-operator{
+.react-calcpicker__calculator-display-operator{
   float: left;
 }
 
-.react-currency-calculator__calculator-display-number{
+.react-calcpicker__calculator-display-number{
   text-align: right;
   float: right;
 }
 
-.react-currency-calculator__calculator-header{
+.react-calcpicker__calculator-header{
   text-align: right;
 }

@@ -26,7 +26,7 @@ export default class Docs extends React.Component
   render(){
     return (
       <div className="container">
-        <h1>React CurrencyCalculator</h1>
+        <h1>React CalcPicker</h1>
         <div style={{position: 'fixed', top: 0, left: 0}}>x: {this.state.x} y: {this.state.y}</div>
         <div className="row">
           <div className="col-md-3">

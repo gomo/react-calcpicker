@@ -23,8 +23,8 @@ describe('Button', () => {
         {style: className, display: "AC", action: Action.allClear}
       ]])
 
-      const button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
-      assert(button.hasClass('react-currency-calculator__calculator-button-' + className))
+      const button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
+      assert(button.hasClass('react-calcpicker__calculator-button-' + className))
     })
   })
 
@@ -33,7 +33,7 @@ describe('Button', () => {
       {style: 'default', display: "some text", action: Action.allClear}
     ]])
 
-    const button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
+    const button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
     assert(button.text() === 'some text')
   })
 
@@ -42,7 +42,7 @@ describe('Button', () => {
       {style: 'default', display: <span>html</span>, action: Action.allClear}
     ]])
 
-    const button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
+    const button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
     assert(button.find('span').html() === '<span>html</span>')
   })
 
@@ -54,21 +54,21 @@ describe('Button', () => {
       calc = createCalculatorWithButtons([[
         {style: 'default', size: {width: num}, display: 'button', action: Action.allClear}
       ]])
-      button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
-      assert(button.hasClass('react-currency-calculator__calculator-button-' + num + 'w'))
+      button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
+      assert(button.hasClass('react-calcpicker__calculator-button-' + num + 'w'))
 
       calc = createCalculatorWithButtons([[
         {style: 'default', size: {height: num}, display: 'button', action: Action.allClear}
       ]])
-      button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
-      assert(button.hasClass('react-currency-calculator__calculator-button-' + num + 'h'))
+      button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
+      assert(button.hasClass('react-calcpicker__calculator-button-' + num + 'h'))
 
       calc = createCalculatorWithButtons([[
         {style: 'default', size: {height: num, width: num}, display: 'button', action: Action.allClear}
       ]])
-      button = calc.find('.react-currency-calculator__calculator-buttons .react-currency-calculator__calculator-button');
-      assert(button.hasClass('react-currency-calculator__calculator-button-' + num + 'h'))
-      assert(button.hasClass('react-currency-calculator__calculator-button-' + num + 'w'))
+      button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button');
+      assert(button.hasClass('react-calcpicker__calculator-button-' + num + 'h'))
+      assert(button.hasClass('react-calcpicker__calculator-button-' + num + 'w'))
     })
 
   })

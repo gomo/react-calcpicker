@@ -20,11 +20,11 @@ export default class Button extends React.Component
 
     const classNames = [];
     if(this.props.size.width){
-      classNames.push("react-currency-calculator__calculator-button-" + this.props.size.width + 'w')
+      classNames.push("react-calcpicker__calculator-button-" + this.props.size.width + 'w')
     }
 
     if(this.props.size.height){
-      classNames.push("react-currency-calculator__calculator-button-" + this.props.size.height + 'h')
+      classNames.push("react-calcpicker__calculator-button-" + this.props.size.height + 'h')
     }
 
     return classNames;
@@ -34,8 +34,8 @@ export default class Button extends React.Component
     return (
       <button
         className={classNames(
-          "react-currency-calculator__calculator-button",
-          this.props.style ? "react-currency-calculator__calculator-button-" + this.props.style : undefined,
+          "react-calcpicker__calculator-button",
+          this.props.style ? "react-calcpicker__calculator-button-" + this.props.style : undefined,
           this.getSizeClass(),
           this.props.className
         )}

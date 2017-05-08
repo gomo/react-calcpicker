@@ -1,1 +1,1 @@
-# react-currency-calculator
+# react-calcpicker

@@ -4,7 +4,7 @@ import 'numeral/locales'
 import Calculator from './Calculator'
 import Portal from 'react-portal'
 
-export default class CurrencyCalculator extends React.Component
+export default class CalcPicker extends React.Component
 {
   constructor(props) {
     super(props);
@@ -80,7 +80,7 @@ export default class CurrencyCalculator extends React.Component
 
   render(){
     return (
-      <div className="react-currency-calculator">
+      <div className="react-calcpicker">
         <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
           {numeral(this.state.amount).format(this.props.currencyFormat)}
         </button>

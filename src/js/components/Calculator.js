@@ -189,19 +189,19 @@ export default class Calculator extends React.Component
   render(){
     const locale = numeral.localeData();
     return (
-      <div ref="calculator" className="react-currency-calculator__calculator" style={{transform: `translate(${this.state.x}px, ${this.state.y}px)`}}>
-        <div className="react-currency-calculator__calculator-header">
-          <Button className="react-currency-calculator__calculator-button-close" display="×" onClick={this.props.onClickClose} />
+      <div ref="calculator" className="react-calcpicker__calculator" style={{transform: `translate(${this.state.x}px, ${this.state.y}px)`}}>
+        <div className="react-calcpicker__calculator-header">
+          <Button className="react-calcpicker__calculator-button-close" display="×" onClick={this.props.onClickClose} />
         </div>
-        <div className="react-currency-calculator__calculator-display">
-          <div className="react-currency-calculator__calculator-display-operator">{this.state.operator.display}</div>
-          <div className="react-currency-calculator__calculator-display-number">
+        <div className="react-calcpicker__calculator-display">
+          <div className="react-calcpicker__calculator-display-operator">{this.state.operator.display}</div>
+          <div className="react-calcpicker__calculator-display-number">
             {numeral(this.state.display).format(this.state.format)}{this.state.unit.display}
           </div>
         </div>
         {this.props.buttons.map((row, rowKey) => {
           return (
-            <div key={rowKey} className="react-currency-calculator__calculator-buttons">
+            <div key={rowKey} className="react-calcpicker__calculator-buttons">
               {row.map((btn, btnKey) => {
                 return <Button key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={display => btn.action(this, btn)} />
               })}

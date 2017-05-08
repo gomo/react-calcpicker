@@ -1,8 +1,8 @@
-.react-currency-calculator {
+.react-calcpicker {
   display: inline-block;
 }
 
-.react-currency-calculator__calculator {
+.react-calcpicker__calculator {
   border: 1px solid #ccc;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -16,12 +16,12 @@
   position: absolute;
 }
 
-.react-currency-calculator__calculator-buttons {
+.react-calcpicker__calculator-buttons {
   position: relative;
   height: 38px;
 }
 
-.react-currency-calculator__calculator-button {
+.react-calcpicker__calculator-button {
   display: inline-block;
   width: 48px;
   height: 32px;
@@ -42,82 +42,82 @@
   cursor: pointer;
 }
 
-.react-currency-calculator__calculator-button-2h {
+.react-calcpicker__calculator-button-2h {
   position: absolute;
   height: 70px;
   top: -38px;
 }
 
-.react-currency-calculator__calculator-button-3h {
+.react-calcpicker__calculator-button-3h {
   position: absolute;
   height: 108px;
   top: -76px;
 }
 
-.react-currency-calculator__calculator-button-4h {
+.react-calcpicker__calculator-button-4h {
   position: absolute;
   height: 146px;
   top: -114px;
 }
 
-.react-currency-calculator__calculator-button-2w {
+.react-calcpicker__calculator-button-2w {
   position: absolute;
   width: 102px;
 }
 
-.react-currency-calculator__calculator-button-2w + .react-currency-calculator__calculator-button {
+.react-calcpicker__calculator-button-2w + .react-calcpicker__calculator-button {
   margin-left: 111px;
 }
 
-.react-currency-calculator__calculator-button-3w {
+.react-calcpicker__calculator-button-3w {
   position: absolute;
   width: 156px;
 }
 
-.react-currency-calculator__calculator-button-3w + .react-currency-calculator__calculator-button {
+.react-calcpicker__calculator-button-3w + .react-calcpicker__calculator-button {
   margin-left: 165px;
 }
 
-.react-currency-calculator__calculator-button-4w {
+.react-calcpicker__calculator-button-4w {
   position: absolute;
   width: 210px;
 }
 
-.react-currency-calculator__calculator-button-4w + .react-currency-calculator__calculator-button {
+.react-calcpicker__calculator-button-4w + .react-calcpicker__calculator-button {
   margin-left: 219px;
 }
 
-.react-currency-calculator__calculator-button-default {
+.react-calcpicker__calculator-button-default {
   color: #222;
   background-color: #fcfcfc;
   border-color: #ccc;
 }
 
-.react-currency-calculator__calculator-button-primary {
+.react-calcpicker__calculator-button-primary {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
 }
 
-.react-currency-calculator__calculator-button-dark {
+.react-calcpicker__calculator-button-dark {
   color: #fff;
   background-color: #2d415a;
   border-color: #131b25;
 }
 
-.react-currency-calculator__calculator-button-warning {
+.react-calcpicker__calculator-button-warning {
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
 }
 
-.react-currency-calculator__calculator-button-light {
+.react-calcpicker__calculator-button-light {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
 
-.react-currency-calculator__calculator-button-close {
+.react-calcpicker__calculator-button-close {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
@@ -125,7 +125,7 @@
   height: 24px;
 }
 
-.react-currency-calculator__calculator-display {
+.react-calcpicker__calculator-display {
   zoom: 1;
   margin: 3px;
   font-size: 16px;
@@ -138,23 +138,23 @@
   background-color: #f2fac9;
   line-height: 16px;
 }
-.react-currency-calculator__calculator-display:before, .react-currency-calculator__calculator-display:after {
+.react-calcpicker__calculator-display:before, .react-calcpicker__calculator-display:after {
   content: "";
   display: table;
 }
-.react-currency-calculator__calculator-display:after {
+.react-calcpicker__calculator-display:after {
   clear: both;
 }
 
-.react-currency-calculator__calculator-display-operator {
+.react-calcpicker__calculator-display-operator {
   float: left;
 }
 
-.react-currency-calculator__calculator-display-number {
+.react-calcpicker__calculator-display-number {
   text-align: right;
   float: right;
 }
 
-.react-currency-calculator__calculator-header {
+.react-calcpicker__calculator-header {
   text-align: right;
 }

@@ -1,8 +1,8 @@
 {
-  "name": "react-currency-calculator",
+  "name": "react-calcpicker",
   "version": "1.0.0",
   "description": "The react component of keyboard with calculation function to input currency.",
-  "main": "dist/react-currency-calculator.js",
+  "main": "dist/react-calcpicker.js",
   "scripts": {
     "test": "mocha --require test/setup.js --compilers js:babel-core/register test/"
   },
