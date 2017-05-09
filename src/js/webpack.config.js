@@ -27,7 +27,40 @@ module.exports = {
         commonjs: 'react',
         amd: 'react'
       }
+    },
+    {
+      'numeral': {
+        root: 'numeral',
+        commonjs2: 'numeral',
+        commonjs: 'numeral',
+        amd: 'numeral'
+      }
+    },
+    {
+      'numeral/locales': {
+        root: 'locales',
+        commonjs2: 'numeral/locales',
+        commonjs: 'numeral/locales',
+        amd: 'numeral/locales'
+      }
+    },
+    {
+      'react-portal': {
+        root: 'Portal',
+        commonjs2: 'react-portal',
+        commonjs: 'react-portal',
+        amd: 'react-portal'
+      }
+    },
+    {
+      'class-names': {
+        root: 'classNames',
+        commonjs2: 'class-names',
+        commonjs: 'class-names',
+        amd: 'class-names'
+      }
     }
+
   ],
   watch: true,
   devtool: "#inline-source-map",

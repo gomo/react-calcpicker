@@ -16,6 +16,11 @@
     "url": "https://github.com/gomo/react-es6-template/issues"
   },
   "homepage": "https://github.com/gomo/react-es6-template#readme",
+  "dependencies": {
+    "numeral": "^2.0.6",
+    "react-portal": "^3.0.0",
+    "class-names": "^1.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
@@ -23,7 +28,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-power-assert": "^1.0.0",
     "babel-preset-react": "^6.24.1",
-    "class-names": "^1.0.0",
     "enzyme": "^2.8.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.4",
@@ -34,12 +38,12 @@
     "jsdom": "^10.0.0",
     "mocha": "^3.3.0",
     "node-notifier": "^4.5.0",
-    "numeral": "^2.0.6",
     "power-assert": "^1.4.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-portal": "^3.0.0",
     "react-test-renderer": "^15.5.4",
     "webpack": "^1.13.3"
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }
