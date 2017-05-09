@@ -9,7 +9,7 @@ export default class Button extends React.Component
 
   onClick(e){
     e.preventDefault();
-    this.props.onClick(this.props.display);
+    this.props.onClick(e);
     return false;
   }
 
@@ -33,6 +33,7 @@ export default class Button extends React.Component
   render(){
     return (
       <button
+        ref="element"
         className={classNames(
           "react-calcpicker__calculator-button",
           this.props.style ? "react-calcpicker__calculator-button-" + this.props.style : undefined,

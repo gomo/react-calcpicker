@@ -203,7 +203,7 @@ export default class Calculator extends React.Component
           return (
             <div key={rowKey} className="react-calcpicker__calculator-buttons">
               {row.map((btn, btnKey) => {
-                return <Button key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={display => btn.action(this, btn)} />
+                return <Button ref={elem => btn.component = elem} key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={e => btn.action(this, btn, e)} />
               })}
             </div>
           )

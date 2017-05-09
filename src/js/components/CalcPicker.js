@@ -16,45 +16,12 @@ export default class CalcPicker extends React.Component
 
     window.onkeydown = (e) => {
       if(this.state.openCalculator){
-        switch (e.key) {
-          case '0':
-          case '1':
-          case '2':
-          case '3':
-          case '4':
-          case '5':
-          case '6':
-          case '7':
-          case '8':
-          case '9':
-            this.refs.calculator.inputNumber(e.key)
-            break;
-          case '+':
-          case '-':
-            this.refs.calculator.onClickOperator(e.key)
-            break;
-          case '/':
-            this.refs.calculator.onClickOperator('÷')
-            break;
-          case '*':
-            this.refs.calculator.onClickOperator('×')
-            break;
-          case '%':
-            this.refs.calculator.onClickPercent()
-            break;
-          case '=':
-          case 'Enter':
-            this.refs.calculator.onClickEnter()
-            break;
-          case 'Clear':
-            this.refs.calculator.allClear()
-            break;
-          case 'Backspace':
-            this.refs.calculator.delete()
-            break;
-          default:
-
-        }
+        this.props.buttons.forEach(row => row.forEach(btn => {
+          if(btn.keyDown && btn.keyDown(e)){
+            e.preventDefault()
+            btn.action(this.refs.calculator, btn, e)
+          }
+        }))
       }
     }
   }

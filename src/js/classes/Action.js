@@ -1,65 +1,86 @@
 const Action =  {
-  one: function(calc){
+  one: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('1')
   },
-  two: function(calc){
+  two: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('2')
   },
-  three: function(calc){
+  three: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('3')
   },
-  four: function(calc){
+  four: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('4')
   },
-  five: function(calc){
+  five: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('5')
   },
-  six: function(calc){
+  six: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('6')
   },
-  seven: function(calc){
+  seven: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('7')
   },
-  eight: function(calc){
+  eight: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('8')
   },
-  nine: function(calc){
+  nine: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('9')
   },
-  zero: function(calc){
+  zero: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('0')
   },
-  doubleZero: function(calc){
+  doubleZero: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputNumber('00')
   },
-  decimal: function(calc){
+  decimal: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputDecimal()
   },
-  percent: function(calc, btnProps){
+  percent: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputPercent(btnProps)
   },
-  plus: function(calc, btnProps){
+  plus: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputOperator('+', btnProps)
   },
-  minus: function(calc, btnProps){
+  minus: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputOperator('-', btnProps)
   },
-  multiplication: function(calc, btnProps){
+  multiplication: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputOperator('*', btnProps)
   },
-  division: function(calc, btnProps){
+  division: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.inputOperator('/', btnProps)
   },
-  enter: function(calc){
+  enter: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.execute()
   },
-  allClear: function(calc){
+  allClear: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.allClear()
   },
-  clear: function(calc){
+  clear: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.clear()
   },
-  backspace: function(calc){
+  backspace: function(calc, btnProps, event){
+    btnProps.component.refs.element.focus()
     calc.delete()
   },
 }
