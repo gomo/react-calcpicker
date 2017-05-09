@@ -11,7 +11,7 @@ export default class Calculator extends React.Component
       display: props.initialAmount,
       amount: props.initialAmount,
       appendMode: false,
-      format: '0,0[.]0[000000000]',
+      format: '0,0[.]0[000000000000]',
       operator: {},
       unit: {},
       x: 0,
@@ -48,7 +48,7 @@ export default class Calculator extends React.Component
     }
   }
 
-  inputNumber(number){
+  inputToDisplay(number){
     if(this.state.appendMode){
       this.setState({
         display: this.state.display + number,
@@ -95,9 +95,10 @@ export default class Calculator extends React.Component
   execute(callback = () => {}){
     let display = this.state.display;
     let amount = this.state.amount;
-
+    let calculated = false;
     if(this.state.operator.value){
       display = this.calc(parseFloat(amount, 10), this.state.operator.value, parseFloat(display, 10));
+      calculated = true;
     }
 
     amount = display;
@@ -108,7 +109,10 @@ export default class Calculator extends React.Component
       display: display,
       amount: amount,
       appendMode: false,
-    }, callback)
+    }, () => {
+      callback()
+      if(calculated) this.fix()
+    })
   }
 
   inputOperator(operator, btnProps){
@@ -134,7 +138,7 @@ export default class Calculator extends React.Component
 
   inputDecimal(){
     if(this.state.display.indexOf('.') === -1){
-      this.inputNumber('.')
+      this.inputToDisplay('.')
     }
   }
 
@@ -184,6 +188,10 @@ export default class Calculator extends React.Component
 
   componentDidMount(){
     this.adjustPosition()
+  }
+
+  fix(){
+    if(this.props.onFixed) this.props.onFixed(this.state.amount)
   }
 
   render(){

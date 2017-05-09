@@ -45,6 +45,12 @@ export default class CalcPicker extends React.Component
     }
   }
 
+  changeValue(value){
+    if(this.state.amount != value){
+      this.setState({amount: value})
+    }
+  }
+
   render(){
     return (
       <div className="react-calcpicker">
@@ -59,6 +65,7 @@ export default class CalcPicker extends React.Component
             button={this.refs.button}
             positions={this.props.positions}
             buttons={this.props.buttons}
+            onFixed={value => this.changeValue(value)}
           />
         </Portal>
       </div>

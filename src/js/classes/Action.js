@@ -1,47 +1,47 @@
 const Action =  {
   one: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('1')
+    calc.inputToDisplay('1')
   },
   two: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('2')
+    calc.inputToDisplay('2')
   },
   three: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('3')
+    calc.inputToDisplay('3')
   },
   four: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('4')
+    calc.inputToDisplay('4')
   },
   five: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('5')
+    calc.inputToDisplay('5')
   },
   six: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('6')
+    calc.inputToDisplay('6')
   },
   seven: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('7')
+    calc.inputToDisplay('7')
   },
   eight: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('8')
+    calc.inputToDisplay('8')
   },
   nine: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('9')
+    calc.inputToDisplay('9')
   },
   zero: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('0')
+    calc.inputToDisplay('0')
   },
   doubleZero: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.inputNumber('00')
+    calc.inputToDisplay('00')
   },
   decimal: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()

@@ -11,7 +11,7 @@ export default class DefaultSection extends React.Component
       <div className="container">
         <CalcPicker
           initialAmount={0}
-          currencyFormat={'$0,0[.]00'}
+          currencyFormat={'$ 0,0[.]00'}
           positions={[Rect.RIGHT_BOTTOM, Rect.RIGHT_TOP, Rect.LEFT_BOTTOM, Rect.LEFT_TOP]}
           buttons={[
             [
