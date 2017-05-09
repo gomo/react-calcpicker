@@ -199,7 +199,7 @@ export default class Calculator extends React.Component
     return (
       <div ref="calculator" className="react-calcpicker__calculator" style={{transform: `translate(${this.state.x}px, ${this.state.y}px)`}}>
         <div className="react-calcpicker__calculator-header">
-          <Button className="react-calcpicker__calculator-button-close" display="×" onClick={this.props.onClickClose} />
+          <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={this.props.onClickClose} />
         </div>
         <div className="react-calcpicker__calculator-display">
           <div className="react-calcpicker__calculator-display-operator">{this.state.operator.display}</div>

@@ -66,6 +66,7 @@ export default class CalcPicker extends React.Component
             positions={this.props.positions}
             buttons={this.props.buttons}
             onFixed={value => this.changeValue(value)}
+            closeButton={this.props.closeButton}
           />
         </Portal>
       </div>
