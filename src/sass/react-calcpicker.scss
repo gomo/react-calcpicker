@@ -17,6 +17,7 @@ $buttonWidth: 48px;
   @include box-shadow(3px 3px 12px -3px rgba(0, 0, 0, 0.4));
   display: inline-block;
   position: absolute;
+  background-color: #fff;
 }
 
 .react-calcpicker__calculator-buttons{

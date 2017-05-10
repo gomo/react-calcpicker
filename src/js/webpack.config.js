@@ -29,6 +29,14 @@ module.exports = {
       }
     },
     {
+      'prop-types': {
+        root: 'PropTypes',
+        commonjs2: 'prop-types',
+        commonjs: 'prop-types',
+        amd: 'prop-types'
+      }
+    },
+    {
       'numeral': {
         root: 'numeral',
         commonjs2: 'numeral',

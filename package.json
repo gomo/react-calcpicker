@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/gomo/react-es6-template#readme",
   "dependencies": {
+    "class-names": "^1.0.0",
     "numeral": "^2.0.6",
-    "react-portal": "^3.0.0",
-    "class-names": "^1.0.0"
+    "react-portal": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -45,6 +45,7 @@
   },
   "peerDependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "prop-types": "^15.5.9"
   }
 }

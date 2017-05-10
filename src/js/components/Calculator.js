@@ -191,7 +191,7 @@ export default class Calculator extends React.Component
   }
 
   fix(){
-    if(this.props.onFixed) this.props.onFixed(this.state.amount)
+    if(this.props.onCalculated) this.props.onCalculated(this.state.amount)
   }
 
   render(){

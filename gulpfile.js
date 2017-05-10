@@ -42,6 +42,29 @@ gulp.task('watch-sass', function() {
   gulp.watch(['src/sass/*.scss', 'src/sass/**/*.scss'], ['build-sass']);
 });
 
+gulp.task('build-docs-sass', function() {
+  return gulp.src(['docs-src/sass/*.scss', 'docs-src/sass/**/*.scss'])
+    .pipe(compass({
+      css: 'docs/css',
+      sass: 'docs-src/sass',
+      image: 'docs/img',
+      import_path: ["docs-src/sass"]
+    }))
+    .on('error', function(error){
+      notifier.notify({
+        title: error.plugin,
+        message: error.message
+      });
+      this.emit('end');
+    })
+    .pipe(gulp.dest('docs/css'))
+    ;
+});
+
+gulp.task('watch-docs-sass', function() {
+  gulp.watch(['docs-sass/sass/*.scss', 'docs-sass/sass/**/*.scss'], ['build-docs-sass']);
+});
+
 gulp.task('build-src', function() {
   var config = require('./src/js/webpack.config.js');
   webpack(config, function(err, stats) {
@@ -68,7 +91,7 @@ gulp.task('build-src', function() {
 });
 
 gulp.task('build-docs', function() {
-  var config = require('./docs-src/webpack.config.js');
+  var config = require('./docs-src/js/webpack.config.js');
   webpack(config, function(err, stats) {
     //notifier
     if (stats.compilation.errors.length) {
@@ -84,4 +107,4 @@ gulp.task('build-docs', function() {
 });
 
 
-gulp.task('default', ['build-sass', 'build-src', 'build-docs', 'watch-sass'])
+gulp.task('default', ['build-sass', 'build-docs-sass', 'build-src', 'build-docs', 'watch-sass', 'watch-docs-sass'])
