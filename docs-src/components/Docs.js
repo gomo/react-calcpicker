@@ -29,14 +29,14 @@ export default class Docs extends React.Component
         <h1>React CalcPicker</h1>
         <div style={{position: 'fixed', top: 0, left: 0}}>x: {this.state.x} y: {this.state.y}</div>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-2">
             <ul>
             {this.sections.map(section => {
               return <li key={section.title}>{section.title}</li>
             })}
             </ul>
           </div>
-          <div className="col-md-9">
+          <div className="col-md-10">
             {this.sections.map(section => {
               const Component = section.component;
               return (

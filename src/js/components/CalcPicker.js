@@ -55,7 +55,7 @@ export default class CalcPicker extends React.Component
     return (
       <div className="react-calcpicker">
         <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
-          {numeral(this.state.amount).format(this.props.currencyFormat)}
+          {numeral(this.state.amount).format(this.props.format)}
         </button>
         <Portal closeOnEsc closeOnOutsideClick isOpened={this.state.openCalculator} onClose={() => this.onCloseCalculator()}>
           <Calculator
