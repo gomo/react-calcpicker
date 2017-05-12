@@ -51,6 +51,7 @@ export default class CalcPicker extends React.Component
   changeValue(value){
     if(this.state.amount != value){
       this.setState({amount: value})
+      this.props.onChange(value)
     }
   }
 
@@ -70,6 +71,7 @@ export default class CalcPicker extends React.Component
             buttons={this.props.buttons}
             onCalculated={value => this.changeValue(value)}
             closeButton={this.props.closeButton}
+            closeOnEnterAction={this.props.closeOnEnterAction}
           />
         </Portal>
       </div>
@@ -94,8 +96,9 @@ CalcPicker.propTypes = {
           PropTypes.object,
           PropTypes.string,
         ]).require,
-        action: PropTypes.func.require,
+        action: PropTypes.func.isRequired,
         keyDown: PropTypes.func,
+        closeOnAction: PropTypes.bool,
       })
     )
   ),
@@ -105,6 +108,8 @@ CalcPicker.propTypes = {
     PropTypes.string,
   ]),
   locale: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  closeOnEnterAction: PropTypes.bool,
 }
 
 CalcPicker.defaultProps = {
@@ -140,5 +145,6 @@ CalcPicker.defaultProps = {
       {style: "default", display: <span>.</span>, action: Action.decimal, keyDown: e => e.key == '.'},
       {style: "warning", display: <span>=</span>, action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
     ]
-  ]
+  ],
+  closeOnEnterAction: true
 }

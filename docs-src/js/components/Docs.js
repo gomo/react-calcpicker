@@ -6,8 +6,8 @@ export default class Docs extends React.Component
   constructor(props) {
     super(props);
     this.sections = [{
-        title: "Default",
-        component: DefaultSection
+      title: "Default",
+      component: DefaultSection
     }]
 
     this.state = {
@@ -41,7 +41,7 @@ export default class Docs extends React.Component
               const Component = section.component;
               return (
                 <section key={section.title}>
-                  <Component />
+                  <Component title={section.title} />
                 </section>
               )
             })}

@@ -12,13 +12,25 @@ export default class DefaultSection extends React.Component
   render(){
     return (
       <div>
-        <div>
-          <CalcPicker className="btn btn-default" />
+        <h2>{this.props.title}</h2>
+        <div className="docs-sample">
+          <h3>Demo</h3>
+          <CalcPicker
+            className="btn btn-default"
+            onChange={val => console.info(val)}
+          />
         </div>
         <div className="docs-source">
+          <h3>Source</h3>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
-{`<CalcPicker className="btn btn-default" />`}
+{`<CalcPicker
+  className="btn btn-default"
+  onChange={val => console.info(val)}
+/>`}
           </SyntaxHighlighter>
+        </div>
+        <div className="docs-description">
+          <h3>Description</h3>
         </div>
       </div>
     );

@@ -69,7 +69,11 @@ const Action =  {
   },
   enter: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
-    calc.execute()
+    calc.execute(() => {
+      if(calc.props.closeOnEnterAction){
+        calc.close()
+      }
+    })
   },
   allClear: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()

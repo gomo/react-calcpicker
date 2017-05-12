@@ -194,12 +194,16 @@ export default class Calculator extends React.Component
     if(this.props.onCalculated) this.props.onCalculated(this.state.amount)
   }
 
+  close(){
+    this.props.onClickClose()
+  }
+
   render(){
     const locale = numeral.localeData();
     return (
       <div ref="calculator" className="react-calcpicker__calculator" style={{transform: `translate(${this.state.x}px, ${this.state.y}px)`}}>
         <div className="react-calcpicker__calculator-header">
-          <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={this.props.onClickClose} />
+          <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={() => this.close()} />
         </div>
         <div className="react-calcpicker__calculator-display">
           <div className="react-calcpicker__calculator-display-operator">{this.state.operator.display}</div>
