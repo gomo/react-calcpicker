@@ -62,7 +62,7 @@ gulp.task('build-docs-sass', function() {
 });
 
 gulp.task('watch-docs-sass', function() {
-  gulp.watch(['docs-sass/sass/*.scss', 'docs-sass/sass/**/*.scss'], ['build-docs-sass']);
+  gulp.watch(['docs-src/sass/*.scss', 'docs-src/sass/**/*.scss'], ['build-docs-sass']);
 });
 
 gulp.task('build-src', function() {
