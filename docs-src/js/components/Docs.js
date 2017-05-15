@@ -35,20 +35,20 @@ export default class Docs extends React.Component
         <div className="row">
           <section className="col-md-2">
             <section>
-              <h1>Install</h1>
+              <h1><a href="#Install">Install</a></h1>
             </section>
             <section>
               <h1>Examples</h1>
               <ul>
-              {this.examples.map(section => {
-                return <li key={section.title}>{section.title}</li>
+              {this.examples.map(example => {
+                return <li key={example.title}><a href={"#" + example.title.replace(' ', '__')}>{example.title}</a></li>
               })}
               </ul>
             </section>
           </section>
           <section className="col-md-10">
             <article className="docs--first-block">
-              <section>
+              <section id="Install">
                 <h1>Install</h1>
                 <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`npm install --save react-calcpicker`}
@@ -61,7 +61,7 @@ export default class Docs extends React.Component
                 {this.examples.map(example => {
                   const Component = example.component;
                   return (
-                    <section key={example.title}>
+                    <section key={example.title} id={example.title.replace(' ', '__')}>
                       <h1>{example.title}</h1>
                       <Component />
                     </section>
