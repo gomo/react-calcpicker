@@ -1,5 +1,6 @@
 import React from 'react'
 import Minimum from './examples/Minimum'
+import CustomButton from './examples/CustomButton'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightEighties } from 'react-syntax-highlighter/dist/styles'
 
@@ -10,6 +11,9 @@ export default class Docs extends React.Component
     this.examples = [{
       title: "Minimum",
       component: Minimum
+    },{
+      title: "Custom button",
+      component: CustomButton
     }]
 
     this.state = {
@@ -61,7 +65,7 @@ export default class Docs extends React.Component
                 {this.examples.map(example => {
                   const Component = example.component;
                   return (
-                    <section key={example.title} id={example.title.replace(' ', '__')}>
+                    <section key={example.title} id={example.title.replace(' ', '__')} className="docs--expamples">
                       <h1>{example.title}</h1>
                       <Component />
                     </section>
