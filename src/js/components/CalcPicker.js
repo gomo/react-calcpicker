@@ -14,7 +14,7 @@ export default class CalcPicker extends React.Component
     numeral.locale(props.locale)
     this.state = {
       openCalculator: false,
-      amount: props.initialAmount
+      value: props.initialValue
     }
 
     window.onkeydown = (e) => {
@@ -49,8 +49,8 @@ export default class CalcPicker extends React.Component
   }
 
   changeValue(value){
-    if(this.state.amount != value){
-      this.setState({amount: value})
+    if(this.state.value != value){
+      this.setState({value: value})
       this.props.onChange(value)
     }
   }
@@ -59,12 +59,12 @@ export default class CalcPicker extends React.Component
     return (
       <div className="react-calcpicker">
         <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
-          {numeral(this.state.amount).format(this.props.format)}
+          {numeral(this.state.value).format(this.props.format)}
         </button>
         <Portal closeOnEsc closeOnOutsideClick isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
           <Calculator
             ref='calculator'
-            initialAmount={this.state.amount}
+            initialValue={this.state.value}
             onClickClose={() => this.setState({openCalculator: false})}
             button={this.refs.button}
             positions={this.props.positions}
@@ -80,7 +80,7 @@ export default class CalcPicker extends React.Component
 }
 
 CalcPicker.propTypes = {
-  initialAmount: PropTypes.number,
+  initialValue: PropTypes.number,
   format: PropTypes.string,
   positions: PropTypes.arrayOf(PropTypes.oneOf([
     Rect.RIGHT_BOTTOM,
@@ -113,7 +113,7 @@ CalcPicker.propTypes = {
 }
 
 CalcPicker.defaultProps = {
-  initialAmount: 0,
+  initialValue: 0,
   format: "0,0[.]00",
   positions: [Rect.RIGHT_BOTTOM],
   closeButton: '×',

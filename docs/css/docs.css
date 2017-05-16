@@ -19,12 +19,16 @@ section section section section h1 {
   font-size: 18px;
 }
 
-.docs--first-block {
+.docs--para {
   margin-bottom: 60px;
 }
 
-.docs--expamples {
+.docs--para-options {
   margin-bottom: 40px;
+}
+
+.docs--para-options-cont {
+  margin-bottom: 20px;
 }
 
 .docs--main-title {

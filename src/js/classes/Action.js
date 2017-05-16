@@ -70,6 +70,7 @@ const Action =  {
   enter: function(calc, btnProps, event){
     btnProps.component.refs.element.focus()
     calc.execute(() => {
+      calc.fix()
       if(calc.props.closeOnEnterAction){
         calc.close()
       }

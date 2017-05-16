@@ -8,7 +8,7 @@ import Action from '../src/js/classes/Action'
 const createCalculator = () => {
   return mount(
     <Calculator
-      initialAmount="0"
+      initialValue="0"
       positions={[]}
       buttons={[
         [

@@ -1,19 +1,28 @@
 import React from 'react'
-import Minimum from './examples/Minimum'
-import CustomButton from './examples/CustomButton'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightEighties } from 'react-syntax-highlighter/dist/styles'
+
+import OnChange from './options/OnChange'
+import Buttons from './options/Buttons'
+import ClassName from './options/ClassName'
+import InitialValue from './options/InitialValue'
 
 export default class Docs extends React.Component
 {
   constructor(props) {
     super(props);
-    this.examples = [{
-      title: "Minimum",
-      component: Minimum
+    this.options = [{
+      title: "onChange",
+      component: OnChange
     },{
-      title: "Custom button",
-      component: CustomButton
+      title: "className",
+      component: ClassName
+    },{
+      title: "initialValue",
+      component: InitialValue
+    },{
+      title: "buttons",
+      component: Buttons
     }]
 
     this.state = {
@@ -42,16 +51,16 @@ export default class Docs extends React.Component
               <h1><a href="#Install">Install</a></h1>
             </section>
             <section>
-              <h1>Examples</h1>
+              <h1>Options</h1>
               <ul>
-              {this.examples.map(example => {
-                return <li key={example.title}><a href={"#" + example.title.replace(' ', '__')}>{example.title}</a></li>
+              {this.options.map(option => {
+                return <li key={option.title}><a href={"#" + option.title.replace(' ', '__')}>{option.title}</a></li>
               })}
               </ul>
             </section>
           </section>
           <section className="col-md-10">
-            <article className="docs--first-block">
+            <article className="docs--para">
               <section id="Install">
                 <h1>Install</h1>
                 <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
@@ -59,14 +68,14 @@ export default class Docs extends React.Component
                 </SyntaxHighlighter>
               </section>
             </article>
-            <article className="docs--first-block">
+            <article className="docs--para">
               <section>
-                <h1>Examples</h1>
-                {this.examples.map(example => {
-                  const Component = example.component;
+                <h1>Options</h1>
+                {this.options.map(option => {
+                  const Component = option.component;
                   return (
-                    <section key={example.title} id={example.title.replace(' ', '__')} className="docs--expamples">
-                      <h1>{example.title}</h1>
+                    <section key={option.title} id={option.title.replace(' ', '__')} className="docs--para-options">
+                      <h1>{option.title}</h1>
                       <Component />
                     </section>
                   )

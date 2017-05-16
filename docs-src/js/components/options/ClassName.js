@@ -3,7 +3,7 @@ import {CalcPicker, Rect, Action} from '../../../../dist/react-calcpicker'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightEighties } from 'react-syntax-highlighter/dist/styles'
 
-export default class Minimum extends React.Component
+export default class ClassName extends React.Component
 {
   constructor(props) {
     super(props);
@@ -12,21 +12,24 @@ export default class Minimum extends React.Component
   render(){
     return (
       <div>
-        <section>
+        <section className="docs--para-options-cont">
           <h1>Demo</h1>
           <CalcPicker
             className="btn btn-default"
-            onChange={val => console.info(val)}
+            onChange={val => console.log(val)}
           />
         </section>
-        <section>
+        <section className="docs--para-options-cont">
           <h1>Source</h1>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`<CalcPicker
   className="btn btn-default"
-  onChange={val => console.info(val)}
+  onChange={val => console.log(val)}
 />`}
           </SyntaxHighlighter>
+        </section>
+        <section className="docs--para-options-cont">
+          <p>You can add a class attribute to a button tag with className option.</p>
         </section>
       </div>
     );

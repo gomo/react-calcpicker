@@ -8,8 +8,8 @@ export default class Calculator extends React.Component
   constructor(props) {
     super(props);
     this.state = {
-      display: props.initialAmount,
-      amount: props.initialAmount,
+      display: props.initialValue,
+      amount: props.initialValue,
       appendMode: false,
       format: '0,0[.]0[000000000000]',
       operator: {},
@@ -111,7 +111,6 @@ export default class Calculator extends React.Component
       appendMode: false,
     }, () => {
       callback()
-      if(calculated) this.fix()
     })
   }
 
