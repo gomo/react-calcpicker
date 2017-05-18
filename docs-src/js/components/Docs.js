@@ -75,7 +75,7 @@ export default class Docs extends React.Component
                   const Component = option.component;
                   return (
                     <section key={option.title} id={option.title.replace(' ', '__')} className="docs--para-options">
-                      <h1>{option.title}</h1>
+                      <h2>{option.title}</h2>
                       <Component />
                     </section>
                   )

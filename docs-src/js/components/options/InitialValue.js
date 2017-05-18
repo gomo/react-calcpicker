@@ -13,14 +13,14 @@ export default class InitialValue extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
-          <h1>Demo</h1>
+          <h3>Demo</h3>
           <CalcPicker
             initialValue={298750}
             onChange={val => console.log(val)}
           />
         </section>
         <section className="docs--para-options-cont">
-          <h1>Source</h1>
+          <h3>Source</h3>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`<CalcPicker
   initialValue={298750}

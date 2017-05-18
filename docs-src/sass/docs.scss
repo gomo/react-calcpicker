@@ -2,23 +2,44 @@ pre code{
   font-size: 12px;
 }
 
+h1{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+h2{
+  font-size: 24px;
+  font-weight: 500;
+}
+
+h3{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+h4{
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+dd{
+  padding-left: 20px;
+  margin-bottom: 10px;
+  dd{
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+}
+
 $paddingLeft: 15px;
 section{
   section{
-    h1{
-      font-size: 30px;
-      font-weight: 500;
-    }
     section{
       padding-left: $paddingLeft;
-      h1{
-        font-size: 24px;
-      }
       section{
         padding-left: $paddingLeft;
-        h1{
-          font-size: 18px;
-        }
       }
     }
   }
@@ -39,7 +60,7 @@ section{
 
 .docs--main-title {
   color: #fff;
-  font-size: 92px;
+  font-size: 74px;
   font-weight: bold;
   font-family: Helvetica;
   text-shadow:

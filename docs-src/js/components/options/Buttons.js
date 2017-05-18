@@ -3,7 +3,7 @@ import {CalcPicker, Rect, Action} from '../../../../dist/react-calcpicker'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightEighties } from 'react-syntax-highlighter/dist/styles'
 
-export default class CustomButton extends React.Component
+export default class Buttons extends React.Component
 {
   constructor(props) {
     super(props);
@@ -13,14 +13,14 @@ export default class CustomButton extends React.Component
     return (
       <div>
         <section>
-          <h1>Demo</h1>
+          <h3>Demo</h3>
           <CalcPicker
-            className="btn btn-default"
             onChange={val => console.info(val)}
             buttons= {[
               [
-                {style: "default", size: {width: 3}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
+                {style: "default", size: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
                 {style: "primary", display: "÷", action: Action.division, keyDown: e => e.key == '/'},
+                {style: "dark", display: "←", action: Action.backspace, keyDown: e => e.key == 'Backspace'},
               ],
               [
                 {style: "dark", display: "AC", action: Action.allClear, keyDown: e => e.key == 'Clear'},
@@ -51,15 +51,15 @@ export default class CustomButton extends React.Component
           />
         </section>
         <section>
-          <h1>Source</h1>
+          <h3>Source</h3>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`<CalcPicker
-  className="btn btn-default"
   onChange={val => console.info(val)}
   buttons= {[
     [
-      {style: "default", size: {width: 3}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
+      {style: "default", size: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
       {style: "primary", display: "÷", action: Action.division, keyDown: e => e.key == '/'},
+      {style: "dark", display: "←", action: Action.backspace, keyDown: e => e.key == 'Backspace'},
     ],
     [
       {style: "dark", display: "AC", action: Action.allClear, keyDown: e => e.key == 'Clear'},
@@ -89,6 +89,35 @@ export default class CustomButton extends React.Component
   ]}
 />`}
           </SyntaxHighlighter>
+        </section>
+        <section>
+          <p>The properties of the button object are as follows.</p>
+          <dl className="dl-horizontal">
+            <dt>style</dt>
+            <dd>
+              This is a prepared style. One of [default | primary | light | dark | warning] can be specified.
+            </dd>
+            <dt>display</dt>
+            <dd>
+              Text used for symbol of button. HTML tags are also possible.
+            </dd>
+            <dt>action</dt>
+            <dd>
+              This is the callback function when the button is pressed. The parameters are (calc, btnProps, event).
+            </dd>
+            <dt>keyDown</dt>
+            <dd>
+              This is the callback function when the keyboard is pressed. If return true, called.
+            </dd>
+            <dt>size</dt>
+            <dd>
+              You can set the size of the button. Please set the object likes {'{heitht: [ 1 | 2 | 3 | 4 ], width: [ 1 | 2 | 3 | 4 ]}'}.
+            </dd>
+            <dt>className</dt>
+            <dd>
+              You can add your own class attribute.
+            </dd>
+          </dl>
         </section>
       </div>
     );
