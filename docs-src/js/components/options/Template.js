@@ -13,6 +13,9 @@ export default class Template extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p></p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
             onChange={val => console.log(val)}
@@ -25,9 +28,6 @@ export default class Template extends React.Component
   onChange={val => console.log(val)}
 />`}
           </SyntaxHighlighter>
-        </section>
-        <section className="docs--para-options-cont">
-          <p></p>
         </section>
       </div>
     );

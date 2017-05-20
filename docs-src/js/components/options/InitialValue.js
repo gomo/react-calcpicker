@@ -13,6 +13,9 @@ export default class InitialValue extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p>You can set the initial value of calculation with this property.</p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
             initialValue={298750}
@@ -27,9 +30,6 @@ export default class InitialValue extends React.Component
   onChange={val => console.log(val)}
 />`}
           </SyntaxHighlighter>
-        </section>
-        <section className="docs--para-options-cont">
-          <p>You can set the initial value of calculation with initialValue.</p>
         </section>
       </div>
     );

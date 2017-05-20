@@ -13,6 +13,9 @@ export default class Buttons extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p>You can customize the button with this property.</p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
             onChange={val => console.info(val)}

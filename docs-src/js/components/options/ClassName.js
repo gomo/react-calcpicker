@@ -13,6 +13,9 @@ export default class ClassName extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p>You can add a class attribute to a button tag with this property.</p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
             className="btn btn-default"
@@ -27,9 +30,6 @@ export default class ClassName extends React.Component
   onChange={val => console.log(val)}
 />`}
           </SyntaxHighlighter>
-        </section>
-        <section className="docs--para-options-cont">
-          <p>You can add a class attribute to a button tag with className option.</p>
         </section>
       </div>
     );

@@ -13,6 +13,9 @@ export default class Positions extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p>The positions specifies the location of the calculator as an array. Look for the position that is displayed at all on the window and use the one that was found first. If it is not found, look for the position with the widest display area and use it.</p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <section className="docs-para-options-subcont">
             <h4>Rect.RIGHT_BOTTOM</h4>
@@ -74,9 +77,6 @@ export default class Positions extends React.Component
   positions={[Rect.WINDOW_CENTER]}
 />`}
           </SyntaxHighlighter>
-        </section>
-        <section className="docs--para-options-cont">
-          <p>The positions specifies the location of the calculator as an array. Look for the position that is displayed at all on the window and use the one that was found first. If it is not found, look for the position with the widest display area and use it.</p>
         </section>
       </div>
     );

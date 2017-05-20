@@ -14,6 +14,9 @@ export default class OnChange extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
+          <p>Called by pressing the `=` key. This option is required.</p>
+        </section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <div>Result: {this.state.result}</div>
           <CalcPicker
@@ -27,9 +30,6 @@ export default class OnChange extends React.Component
   onChange={val => this.setState({result: val})}
 />`}
           </SyntaxHighlighter>
-        </section>
-        <section className="docs--para-options-cont">
-          <p>Called by pressing the `=` key. This option is required.</p>
         </section>
       </div>
     );
