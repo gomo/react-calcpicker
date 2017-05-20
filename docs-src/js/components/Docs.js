@@ -8,6 +8,7 @@ import ClassName from './options/ClassName'
 import InitialValue from './options/InitialValue'
 import Positions from './options/Positions'
 import CloseButton from './options/CloseButton'
+import FormatLocale from './options/FormatLocale'
 
 export default class Docs extends React.Component
 {
@@ -31,6 +32,9 @@ export default class Docs extends React.Component
     },{
       title: "closeButton",
       component: CloseButton
+    },{
+      title: "format and locale",
+      component: FormatLocale
     }]
 
     this.state = {
