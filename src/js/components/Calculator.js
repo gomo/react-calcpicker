@@ -27,10 +27,18 @@ export default class Calculator extends React.Component
       const buttonRect = Rect.createWithElement(this.props.button);
       const calcRect = Rect.createWithElement(this.refs.calculator, this.state.x, this.state.y);
 
+      const rects = []
       let newCalcRect = undefined;
       for (var i = 0; i < this.props.positions.length; i++) {
         const posKey = this.props.positions[i]
-        const rect = buttonRect.getRelativeRect(calcRect, posKey)
+        let rect;
+        if(posKey == Rect.WINDOW_CENTER){
+          rect = windowRect.getRelativeRect(calcRect, posKey)
+        } else {
+          rect = buttonRect.getRelativeRect(calcRect, posKey)
+        }
+
+        rects.push(rect)
         if(windowRect.contains(rect)){
           newCalcRect = rect;
           break;
@@ -38,7 +46,8 @@ export default class Calculator extends React.Component
       }
 
       if(!newCalcRect){
-        newCalcRect = windowRect.getRelativeRect(calcRect, Rect.CENTER)
+        rects.sort((a, b) => windowRect.getOverlappingRect(b).area - windowRect.getOverlappingRect(a).area)
+        newCalcRect = rects[0]
       }
 
       this.setState({

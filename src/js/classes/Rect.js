@@ -33,6 +33,10 @@ export default class Rect
     return this.originLeft + this.width;
   }
 
+  get area(){
+    return this.width * this.height;
+  }
+
   getCenterRect(width, height){
     const center = {
       x: this.left + (this.width / 2),
@@ -116,7 +120,7 @@ export default class Rect
           this.left - rect.originLeft,
           this.top - rect.originBottom
         )
-      case Rect.CENTER:
+      case Rect.WINDOW_CENTER:
         const expectedRect = this.getCenterRect(rect.width, rect.height)
         return rect.clone().transform(
           expectedRect.left - rect.originLeft,
@@ -206,9 +210,9 @@ Object.defineProperty(Rect, 'LEFT_BOTTOM', {
   value: "LEFT_BOTTOM"
 });
 
-Object.defineProperty(Rect, 'CENTER', {
+Object.defineProperty(Rect, 'WINDOW_CENTER', {
   enumerable: false,
   configurable: false,
   writable: false,
-  value: "CENTER"
+  value: "WINDOW_CENTER"
 });

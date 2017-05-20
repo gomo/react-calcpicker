@@ -87,6 +87,7 @@ CalcPicker.propTypes = {
     Rect.LEFT_BOTTOM,
     Rect.RIGHT_TOP,
     Rect.LEFT_TOP,
+    Rect.WINDOW_CENTER,
   ])),
   buttons: PropTypes.arrayOf(
     PropTypes.arrayOf(
@@ -115,7 +116,13 @@ CalcPicker.propTypes = {
 CalcPicker.defaultProps = {
   initialValue: 0,
   format: "0,0[.]00",
-  positions: [Rect.RIGHT_BOTTOM],
+  positions: [
+    Rect.RIGHT_BOTTOM,
+    Rect.LEFT_BOTTOM,
+    Rect.RIGHT_TOP,
+    Rect.LEFT_TOP,
+    Rect.WINDOW_CENTER,
+  ],
   closeButton: '×',
   buttons: [
     [
