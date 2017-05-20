@@ -18,16 +18,16 @@ export default class ClassName extends React.Component
         <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
-            className="btn btn-default"
             onChange={val => console.log(val)}
+            className="btn btn-default"
           />
         </section>
         <section className="docs--para-options-cont">
           <h3>Source</h3>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`<CalcPicker
-  className="btn btn-default"
   onChange={val => console.log(val)}
+  className="btn btn-default"
 />`}
           </SyntaxHighlighter>
         </section>

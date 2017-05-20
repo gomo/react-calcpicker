@@ -9,6 +9,7 @@ import InitialValue from './options/InitialValue'
 import Positions from './options/Positions'
 import CloseButton from './options/CloseButton'
 import FormatLocale from './options/FormatLocale'
+import CloseOnEnterAction from './options/CloseOnEnterAction'
 
 export default class Docs extends React.Component
 {
@@ -35,6 +36,9 @@ export default class Docs extends React.Component
     },{
       title: "format and locale",
       component: FormatLocale
+    },{
+      title: "closeOnEnterAction",
+      component: CloseOnEnterAction
     }]
 
     this.state = {

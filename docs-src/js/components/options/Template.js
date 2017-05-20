@@ -3,7 +3,7 @@ import {CalcPicker, Rect, Action} from '../../../../dist/react-calcpicker'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightEighties } from 'react-syntax-highlighter/dist/styles'
 
-export default class Template extends React.Component
+export default class CloseOnEnterAction extends React.Component
 {
   constructor(props) {
     super(props);
