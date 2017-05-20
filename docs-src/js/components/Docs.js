@@ -7,6 +7,7 @@ import Buttons from './options/Buttons'
 import ClassName from './options/ClassName'
 import InitialValue from './options/InitialValue'
 import Positions from './options/Positions'
+import CloseButton from './options/CloseButton'
 
 export default class Docs extends React.Component
 {
@@ -27,6 +28,9 @@ export default class Docs extends React.Component
     },{
       title: "positions",
       component: Positions
+    },{
+      title: "closeButton",
+      component: CloseButton
     }]
 
     this.state = {
