@@ -126,6 +126,21 @@ export default class Rect
         throw 'Illegal positionKey `' + position + '` is specified';
     }
   }
+
+  getOverlappingRect(rect){
+    const top = Math.max(this.top, rect.top)
+    const left = Math.max(this.left, rect.left)
+    const right = Math.min(this.right, rect.right);
+    const bottom = Math.min(this.bottom, rect.bottom);
+
+    var width = right - left;
+    var height = bottom - top;
+    if (width > 0 && height > 0) {
+        return new Rect(top, left, width, height);
+    } else {
+        return null;
+    }
+  }
 }
 
 Rect.createWithElement = (elem, transformX = 0, transformY = 0) => {
