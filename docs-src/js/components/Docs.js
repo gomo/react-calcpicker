@@ -6,6 +6,7 @@ import OnChange from './options/OnChange'
 import Buttons from './options/Buttons'
 import ClassName from './options/ClassName'
 import InitialValue from './options/InitialValue'
+import Positions from './options/Positions'
 
 export default class Docs extends React.Component
 {
@@ -23,6 +24,9 @@ export default class Docs extends React.Component
     },{
       title: "buttons",
       component: Buttons
+    },{
+      title: "positions",
+      component: Positions
     }]
 
     this.state = {
