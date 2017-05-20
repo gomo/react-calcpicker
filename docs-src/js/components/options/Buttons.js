@@ -12,7 +12,7 @@ export default class Buttons extends React.Component
   render(){
     return (
       <div>
-        <section>
+        <section className="docs--para-options-cont">
           <h3>Demo</h3>
           <CalcPicker
             onChange={val => console.info(val)}
@@ -50,7 +50,7 @@ export default class Buttons extends React.Component
             ]}
           />
         </section>
-        <section>
+        <section className="docs--para-options-cont">
           <h3>Source</h3>
           <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`<CalcPicker
@@ -90,7 +90,7 @@ export default class Buttons extends React.Component
 />`}
           </SyntaxHighlighter>
         </section>
-        <section>
+        <section className="docs--para-options-cont">
           <p>The properties of the button object are as follows.</p>
           <dl className="dl-horizontal">
             <dt>style</dt>
