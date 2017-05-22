@@ -13,7 +13,7 @@ export default class InitialValue extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
-          <p>You can set the initial value of calculation with this property.</p>
+          <p>You can set the initial value of calculation.</p>
         </section>
         <section className="docs--para-options-cont">
           <h3>Demo</h3>

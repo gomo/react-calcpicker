@@ -13,7 +13,7 @@ export default class ClassName extends React.Component
     return (
       <div>
         <section className="docs--para-options-cont">
-          <p>You can add a class attribute to a button tag with this property.</p>
+          <p>You can add a class attribute to a button tag.</p>
         </section>
         <section className="docs--para-options-cont">
           <h3>Demo</h3>

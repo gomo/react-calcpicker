@@ -59,16 +59,13 @@ export default class Docs extends React.Component
       <article className="container">
         <header>
           <div style={{position: 'fixed', top: 0, left: 0}}>x: {this.state.x} y: {this.state.y}</div>
-          <h1 className="docs--main-title">React CalcPicker</h1>
+          <h1 className="docs--main-title"><i className="fa fa-calculator" aria-hidden="true"></i> React CalcPicker</h1>
         </header>
         <div className="row">
-          <section className="col-md-2">
+          <section className="docs-menu col-md-2">
             <section>
-              <h1><a href="#Install">Install</a></h1>
-            </section>
-            <section>
-              <h1>Options</h1>
-              <ul>
+              <h1><i className="fa fa-list-ul" aria-hidden="true"></i> Options</h1>
+              <ul className="list-unstyled">
               {this.options.map(option => {
                 return <li key={option.title}><a href={"#" + option.title.replace(' ', '__')}>{option.title}</a></li>
               })}
@@ -78,7 +75,7 @@ export default class Docs extends React.Component
           <section className="col-md-10">
             <article className="docs--para">
               <section id="Install">
-                <h1>Install</h1>
+                <h1><i className="fa fa-sign-in" aria-hidden="true"></i> Install</h1>
                 <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`npm install --save react-calcpicker`}
                 </SyntaxHighlighter>
@@ -86,7 +83,7 @@ export default class Docs extends React.Component
             </article>
             <article className="docs--para">
               <section>
-                <h1>Options</h1>
+                <h1><i className="fa fa-list-ul" aria-hidden="true"></i> Options</h1>
                 {this.options.map(option => {
                   const Component = option.component;
                   return (
