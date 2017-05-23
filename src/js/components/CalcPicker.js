@@ -17,7 +17,7 @@ export default class CalcPicker extends React.Component
       value: props.initialValue
     }
 
-    window.onkeydown = (e) => {
+    window.addEventListener('keydown', (e) => {
       if(this.state.openCalculator){
         this.props.buttons.forEach(row => row.forEach(btn => {
           if(btn.keyDown && btn.keyDown(e)){
@@ -26,7 +26,7 @@ export default class CalcPicker extends React.Component
           }
         }))
       }
-    }
+    })
   }
 
   componentWillReceiveProps(nextProps){
