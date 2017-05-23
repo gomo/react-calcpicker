@@ -74,7 +74,7 @@ export default class Docs extends React.Component
           </section>
           <section className="col-md-10">
             <article className="docs--para">
-              <section id="Install">
+              <section>
                 <h1><i className="fa fa-cubes" aria-hidden="true"></i> Feature</h1>
                 <p>React component for input numbers with calculator.</p>
                 <ul>
@@ -83,7 +83,9 @@ export default class Docs extends React.Component
                   <li>Customizable calculator dialog position.</li>
                 </ul>
               </section>
-              <section id="Install">
+            </article>
+            <article className="docs--para">
+              <section>
                 <h1><i className="fa fa-sign-in" aria-hidden="true"></i> Install</h1>
                 <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`npm install --save react-calcpicker`}
