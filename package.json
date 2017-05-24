@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gomo/react-es6-template.git"
+    "url": "git+https://github.com/gomo/react-calcpicker.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gomo/react-es6-template/issues"
+    "url": "https://github.com/gomo/react-calcpicker/issues"
   },
-  "homepage": "https://github.com/gomo/react-es6-template#readme",
+  "homepage": "https://github.com/gomo/react-calcpicker#readme",
   "dependencies": {
     "class-names": "^1.0.0",
     "numeral": "^2.0.6",
