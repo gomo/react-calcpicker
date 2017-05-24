@@ -1,8 +1,82 @@
 language: node_js
 node_js:
-  - "node"
-before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - 6
+  - stable
+sudo: false
+
+git:
+  submodules: false
+
 script:
   - npm test
+
+addons:
+  hosts:
+    - web-platform.test
+    - www.web-platform.test
+    - www1.web-platform.test
+    - www2.web-platform.test
+    - xn--n8j6ds53lwwkrqhv28a.web-platform.test
+    - xn--lve-6lad.web-platform.test
+
+matrix:
+  include:
+    - node_js: 6
+      env: TEST_SUITE=node-canvas-prebuilt
+      script: "export CXX=g++-4.8 && npm i canvas-prebuilt && npm test"
+      addons:
+        hosts:
+          - web-platform.test
+          - www.web-platform.test
+          - www1.web-platform.test
+          - www2.web-platform.test
+          - xn--n8j6ds53lwwkrqhv28a.web-platform.test
+          - xn--lve-6lad.web-platform.test
+    - node_js: 6
+      env: TEST_SUITE=node-canvas
+      script: "export CXX=g++-4.8 && npm i canvas && npm test"
+      addons:
+        hosts:
+          - web-platform.test
+          - www.web-platform.test
+          - www1.web-platform.test
+          - www2.web-platform.test
+          - xn--n8j6ds53lwwkrqhv28a.web-platform.test
+          - xn--lve-6lad.web-platform.test
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.8
+            - libcairo2-dev
+            - libjpeg8-dev
+            - libpango1.0-dev
+            - libgif-dev
+            - build-essential
+    - node_js: stable
+      env: TEST_SUITE=node-canvas
+      script: "export CXX=g++-4.8 && npm i canvas && npm test"
+      addons:
+        hosts:
+          - web-platform.test
+          - www.web-platform.test
+          - www1.web-platform.test
+          - www2.web-platform.test
+          - xn--n8j6ds53lwwkrqhv28a.web-platform.test
+          - xn--lve-6lad.web-platform.test
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.8
+            - libcairo2-dev
+            - libjpeg8-dev
+            - libpango1.0-dev
+            - libgif-dev
+            - build-essential
+    - script: '[ "${TRAVIS_PULL_REQUEST}" != "false" ] || (npm run pretest && npm run test-browser)'
+      env: TEST_SUITE=browser
+      addons:
+        sauce_connect:
+          username: "jsdom"
+          access_key: "7d402b1d-0388-467c-8d99-edf195456eee"
