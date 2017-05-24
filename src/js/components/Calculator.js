@@ -50,10 +50,12 @@ export default class Calculator extends React.Component
         newCalcRect = rects[0]
       }
 
-      this.setState({
-        x: newCalcRect.transformX,
-        y: newCalcRect.transformY,
-      });
+      if(newCalcRect){
+        this.setState({
+          x: newCalcRect.transformX,
+          y: newCalcRect.transformY,
+        });
+      }
     }
   }
 
