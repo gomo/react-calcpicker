@@ -86,9 +86,14 @@ export default class Docs extends React.Component
             </article>
             <article className="docs--para">
               <section>
-                <h1><i className="fa fa-sign-in" aria-hidden="true"></i> Install</h1>
+                <h1><i className="fa fa-sign-in" aria-hidden="true"></i> Install and Import</h1>
                 <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
 {`npm install --save react-calcpicker`}
+                </SyntaxHighlighter>
+              </section>
+              <section>
+                <SyntaxHighlighter language='javascript' style={tomorrowNightEighties}>
+{`import {CalcPicker, Rect, Action} from 'react-calcpicker'`}
                 </SyntaxHighlighter>
               </section>
             </article>
