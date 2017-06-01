@@ -10,6 +10,7 @@ import Positions from './options/Positions'
 import CloseButton from './options/CloseButton'
 import FormatLocale from './options/FormatLocale'
 import CloseOnEnterAction from './options/CloseOnEnterAction'
+import ZIndex from './options/ZIndex'
 
 export default class Docs extends React.Component
 {
@@ -39,6 +40,9 @@ export default class Docs extends React.Component
     },{
       title: "closeOnEnterAction",
       component: CloseOnEnterAction
+    },{
+      title: "zIndex",
+      component: ZIndex
     }]
 
     this.state = {

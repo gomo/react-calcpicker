@@ -210,8 +210,12 @@ export default class Calculator extends React.Component
 
   render(){
     const locale = numeral.localeData();
+    const style = {transform: `translate(${this.state.x}px, ${this.state.y}px)`}
+    if(this.props.zIndex !== undefined){
+      style['zIndex'] = this.props.zIndex;
+    }
     return (
-      <div ref="calculator" className="react-calcpicker__calculator" style={{transform: `translate(${this.state.x}px, ${this.state.y}px)`}}>
+      <div ref="calculator" className="react-calcpicker__calculator" style={style}>
         <div className="react-calcpicker__calculator-header">
           <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={() => this.close()} />
         </div>

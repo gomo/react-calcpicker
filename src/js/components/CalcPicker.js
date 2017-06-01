@@ -72,6 +72,7 @@ export default class CalcPicker extends React.Component
             onCalculated={value => this.changeValue(value)}
             closeButton={this.props.closeButton}
             closeOnEnterAction={this.props.closeOnEnterAction}
+            zIndex={this.props.zIndex}
           />
         </Portal>
       </div>
@@ -111,6 +112,7 @@ CalcPicker.propTypes = {
   locale: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   closeOnEnterAction: PropTypes.bool,
+  zIndex: PropTypes.number
 }
 
 CalcPicker.defaultProps = {
