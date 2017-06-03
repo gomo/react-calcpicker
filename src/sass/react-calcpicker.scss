@@ -146,5 +146,16 @@ $buttonWidth: 48px;
 }
 
 .react-calcpicker__calculator-header{
-  text-align: right;
+  @include display-flex;
+}
+
+.react-calcpicker__calculator-header-title{
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 2px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: (($buttonWidth * 4) + ($gridMargin * 8)) - 30;
 }

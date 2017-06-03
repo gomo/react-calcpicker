@@ -63,6 +63,7 @@ export default class CalcPicker extends React.Component
         </button>
         <Portal closeOnEsc closeOnOutsideClick isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
           <Calculator
+            title={this.props.title}
             ref='calculator'
             initialValue={this.state.value}
             onClickClose={() => this.setState({openCalculator: false})}
@@ -112,7 +113,8 @@ CalcPicker.propTypes = {
   locale: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   closeOnEnterAction: PropTypes.bool,
-  zIndex: PropTypes.number
+  zIndex: PropTypes.number,
+  title: PropTypes.string
 }
 
 CalcPicker.defaultProps = {

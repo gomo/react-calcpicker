@@ -157,5 +157,17 @@
 }
 
 .react-calcpicker__calculator-header {
-  text-align: right;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.react-calcpicker__calculator-header-title {
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 2px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 186px;
 }

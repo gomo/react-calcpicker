@@ -217,7 +217,12 @@ export default class Calculator extends React.Component
     return (
       <div ref="calculator" className="react-calcpicker__calculator" style={style}>
         <div className="react-calcpicker__calculator-header">
-          <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={() => this.close()} />
+          <div className="react-calcpicker__calculator-header-title">
+            {this.props.title}
+          </div>
+          <div className="react-calcpicker__calculator-header-button">
+            <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={() => this.close()} />
+          </div>
         </div>
         <div className="react-calcpicker__calculator-display">
           <div className="react-calcpicker__calculator-display-operator">{this.state.operator.display}</div>
