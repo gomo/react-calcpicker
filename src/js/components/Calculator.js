@@ -18,6 +18,8 @@ export default class Calculator extends React.Component
       y: 0,
     }
 
+    this.closeButtonSize = 30;
+
     window.onresize = () => this.adjustPosition();
   }
 
@@ -217,14 +219,21 @@ export default class Calculator extends React.Component
     return (
       <div ref="calculator" className="react-calcpicker__calculator" style={style}>
         <div className="react-calcpicker__calculator-header">
-          <div className="react-calcpicker__calculator-header-title">
+          <div className="react-calcpicker__calculator-header-title" style={{width: ((this.props.buttonWidth * 4) + (this.props.buttonMargin * 6)) - this.closeButtonSize}}>
             {this.props.title}
           </div>
           <div className="react-calcpicker__calculator-header-button">
-            <Button className="react-calcpicker__calculator-button-close" display={this.props.closeButton} onClick={() => this.close()} />
+            <Button
+              className="react-calcpicker__calculator-button-close"
+              display={this.props.closeButton}
+              onClick={() => this.close()}
+              width={this.closeButtonSize}
+              height={this.closeButtonSize}
+              margin={this.props.buttonMargin}
+            />
           </div>
         </div>
-        <div className="react-calcpicker__calculator-display">
+        <div className="react-calcpicker__calculator-display" style={{margin: this.props.buttonMargin}}>
           <div className="react-calcpicker__calculator-display-operator">{this.state.operator.display}</div>
           <div className="react-calcpicker__calculator-display-number">
             {numeral(this.state.display).format(this.state.format)}{this.state.unit.display}
@@ -234,7 +243,21 @@ export default class Calculator extends React.Component
           return (
             <div key={rowKey} className="react-calcpicker__calculator-buttons">
               {row.map((btn, btnKey) => {
-                return <Button ref={elem => btn.component = elem} key={rowKey + '-' + btnKey} className={btn.className} style={btn.style} size={btn.size} display={btn.display} onClick={e => btn.action(this, btn, e)} />
+                return (
+                  <Button
+                    ref={elem => btn.component = elem}
+                    prevButton={btnKey > 0 ? row[btnKey - 1] : null}
+                    key={rowKey + '-' + btnKey}
+                    className={btn.className}
+                    style={btn.style}
+                    span={btn.span}
+                    display={btn.display}
+                    onClick={e => btn.action(this, btn, e)}
+                    width={this.props.buttonWidth}
+                    height={this.props.buttonHeight}
+                    margin={this.props.buttonMargin}
+                  />
+                )
               })}
             </div>
           )

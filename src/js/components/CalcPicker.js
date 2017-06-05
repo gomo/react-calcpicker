@@ -74,6 +74,9 @@ export default class CalcPicker extends React.Component
             closeButton={this.props.closeButton}
             closeOnEnterAction={this.props.closeOnEnterAction}
             zIndex={this.props.zIndex}
+            buttonWidth={this.props.buttonWidth}
+            buttonHeight={this.props.buttonHeight}
+            buttonMargin={this.props.buttonMargin}
           />
         </Portal>
       </div>
@@ -99,12 +102,18 @@ CalcPicker.propTypes = {
           PropTypes.object,
           PropTypes.string,
         ]).require,
+        span: PropTypes.shape({
+          width: PropTypes.number,
+          height: PropTypes.number
+        }),
         action: PropTypes.func.isRequired,
-        keyDown: PropTypes.func,
-        closeOnAction: PropTypes.bool,
+        keyDown: PropTypes.func
       })
     )
   ),
+  buttonWidth: PropTypes.number,
+  buttonHeight: PropTypes.number,
+  buttonMargin: PropTypes.number,
   className: PropTypes.string,
   closeButton: PropTypes.oneOfType([
     PropTypes.object,
@@ -114,7 +123,7 @@ CalcPicker.propTypes = {
   onChange: PropTypes.func.isRequired,
   closeOnEnterAction: PropTypes.bool,
   zIndex: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
 
 CalcPicker.defaultProps = {
@@ -157,5 +166,8 @@ CalcPicker.defaultProps = {
       {style: "warning", display: "=", action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
     ]
   ],
-  closeOnEnterAction: true
+  closeOnEnterAction: true,
+  buttonWidth: 48,
+  buttonHeight: 32,
+  buttonMargin: 3,
 }

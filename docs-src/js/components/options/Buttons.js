@@ -21,7 +21,7 @@ export default class Buttons extends React.Component
             onChange={val => console.info(val)}
             buttons= {[
               [
-                {style: "default", size: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
+                {style: "default", span: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
                 {style: "primary", display: "÷", action: Action.division, keyDown: e => e.key == '/'},
                 {style: "dark", display: "←", action: Action.backspace, keyDown: e => e.key == 'Backspace'},
               ],
@@ -46,9 +46,9 @@ export default class Buttons extends React.Component
                 {style: "default", display: "2", action: Action.two, keyDown: e => e.key == '2'},
                 {style: "default", display: "3", action: Action.three, keyDown: e => e.key == '3'},
               ],[
-                {style: "default", size:{width: 2}, display: "0", action: Action.zero, keyDown: e => e.key == '0'},
+                {style: "default", span: {width: 2}, display: "0", action: Action.zero, keyDown: e => e.key == '0'},
                 {style: "default", display: ".", action: Action.decimal, keyDown: e => e.key == '.'},
-                {style: "warning", size:{height: 2}, display: "=", action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
+                {style: "warning", span: {height: 2}, display: "=", action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
               ]
             ]}
           />
@@ -60,7 +60,7 @@ export default class Buttons extends React.Component
   onChange={val => console.info(val)}
   buttons= {[
     [
-      {style: "default", size: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
+      {style: "default", span: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
       {style: "primary", display: "÷", action: Action.division, keyDown: e => e.key == '/'},
       {style: "dark", display: "←", action: Action.backspace, keyDown: e => e.key == 'Backspace'},
     ],
@@ -85,9 +85,9 @@ export default class Buttons extends React.Component
       {style: "default", display: "2", action: Action.two, keyDown: e => e.key == '2'},
       {style: "default", display: "3", action: Action.three, keyDown: e => e.key == '3'},
     ],[
-      {style: "default", size:{width: 2}, display: "0", action: Action.zero, keyDown: e => e.key == '0'},
+      {style: "default", span: {width: 2}, display: "0", action: Action.zero, keyDown: e => e.key == '0'},
       {style: "default", display: ".", action: Action.decimal, keyDown: e => e.key == '.'},
-      {style: "warning", size:{height: 2}, display: "=", action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
+      {style: "warning", span: {height: 2}, display: "=", action: Action.enter, keyDown: e => e.key == '=' || e.key == 'Enter'},
     ]
   ]}
 />`}
@@ -98,7 +98,7 @@ export default class Buttons extends React.Component
           <dl className="dl-horizontal">
             <dt>style</dt>
             <dd>
-              This is a prepared style. One of [default | primary | light | dark | warning] can be specified.
+              This is a prepared style. One of default|primary|light|dark|warning can be specified.
             </dd>
             <dt>display</dt>
             <dd>
@@ -112,9 +112,9 @@ export default class Buttons extends React.Component
             <dd>
               This is the callback function when the keyboard is pressed. If return true, called.
             </dd>
-            <dt>size</dt>
+            <dt>span</dt>
             <dd>
-              You can set the size of the button. Please set the object likes {'{heitht: [ 1 | 2 | 3 | 4 ], width: [ 1 | 2 | 3 | 4 ]}'}.
+              You can set the span(size) of the button. Please set the object likes `{`{width: 2, height: 3}`}`.
             </dd>
             <dt>className</dt>
             <dd>

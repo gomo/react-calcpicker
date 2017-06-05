@@ -12,6 +12,7 @@ import FormatLocale from './options/FormatLocale'
 import CloseOnEnterAction from './options/CloseOnEnterAction'
 import ZIndex from './options/ZIndex'
 import Title from './options/Title'
+import ButtonSize from './options/ButtonSize'
 
 export default class Docs extends React.Component
 {
@@ -29,6 +30,9 @@ export default class Docs extends React.Component
     },{
       title: "buttons",
       component: Buttons
+    },{
+      title: "buttonWidth, buttonHeight, buttonMargin",
+      component: ButtonSize
     },{
       title: "positions",
       component: Positions

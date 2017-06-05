@@ -1,10 +1,6 @@
 @import "compass";
 @import 'mixin';
 
-$gridMargin: 3px;
-$buttonHeight: 32px;
-$buttonWidth: 48px;
-
 .react-calcpicker{
   display: inline-block;
 }
@@ -22,16 +18,12 @@ $buttonWidth: 48px;
 
 .react-calcpicker__calculator-buttons{
   position: relative;
-  height: $buttonHeight + ($gridMargin * 2);
 }
 
 .react-calcpicker__calculator-button{
   display: inline-block;
-  width: $buttonWidth;
-  height: $buttonHeight;
   padding: 0;
   font-size: 16px;
-  margin: $gridMargin;
   display: inline-block;
   font-weight: bold;
   text-align: center;
@@ -39,51 +31,6 @@ $buttonWidth: 48px;
   @include border-radius(4px);
   @include user-select(none);
   cursor: pointer;
-}
-
-.react-calcpicker__calculator-button-2h{
-  position: absolute;
-  height: (($buttonHeight * 2) + ($gridMargin * 2));
-  top: -($buttonHeight + ($gridMargin * 2));
-}
-
-.react-calcpicker__calculator-button-3h{
-  position: absolute;
-  height: (($buttonHeight * 3) + ($gridMargin * 4));
-  top: -(($buttonHeight * 2) + ($gridMargin * 4));
-}
-
-.react-calcpicker__calculator-button-4h{
-  position: absolute;
-  height: (($buttonHeight * 4) + ($gridMargin * 6));
-  top: -(($buttonHeight * 3) + ($gridMargin * 6));
-}
-
-.react-calcpicker__calculator-button-2w{
-  position: absolute;
-  width: (($buttonWidth * 2) + ($gridMargin * 2));
-}
-
-.react-calcpicker__calculator-button-2w + .react-calcpicker__calculator-button{
-  margin-left: (($buttonWidth * 2) + ($gridMargin * 5));
-}
-
-.react-calcpicker__calculator-button-3w{
-  position: absolute;
-  width: (($buttonWidth * 3) + ($gridMargin * 4));
-}
-
-.react-calcpicker__calculator-button-3w + .react-calcpicker__calculator-button{
-  margin-left: (($buttonWidth * 3) + ($gridMargin * 7));
-}
-
-.react-calcpicker__calculator-button-4w{
-  position: absolute;
-  width: (($buttonWidth * 4) + ($gridMargin * 6));
-}
-
-.react-calcpicker__calculator-button-4w + .react-calcpicker__calculator-button{
-  margin-left: (($buttonWidth * 4) + ($gridMargin * 9));
 }
 
 .react-calcpicker__calculator-button-default{
@@ -126,14 +73,13 @@ $buttonWidth: 48px;
 
 .react-calcpicker__calculator-display{
   @include clearfix();
-  margin: $gridMargin;
   font-size: 16px;
   font-weight: bold;
   padding: 5px 10px;
   border: 1px solid #ccc;
   @include border-radius(4px);
   background-color: #f2fac9;
-  line-height: 16px;
+  line-height: 20px;
 }
 
 .react-calcpicker__calculator-display-operator{
@@ -150,12 +96,11 @@ $buttonWidth: 48px;
 }
 
 .react-calcpicker__calculator-header-title{
-  line-height: 30px;
+  line-height: 36px;
   font-size: 14px;
   font-weight: bold;
   padding: 0 2px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: (($buttonWidth * 4) + ($gridMargin * 8)) - 30;
 }

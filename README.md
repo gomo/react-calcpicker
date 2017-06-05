@@ -6,3 +6,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 https://gomo.github.io/react-calcpicker/
+
+## History
+
+### 2.0.0
+
+ * Added properties to change the size of the button, and ceased designating the button size in CSS.
+ * The `size` element of the buttons property has been renamed to `span`.
+
+### 1.2.0
+
+ * Changed to be able to add title to calculator dialog.
+
+### 1.1.0
+
+ * Added support zIndex.
+
+### 1.0.1
+
+ * Fixed github url for package.json
+
+### 1.0.0
+
+ * First release.
