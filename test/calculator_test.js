@@ -10,6 +10,9 @@ const createCalculator = () => {
     <Calculator
       initialValue="0"
       positions={[]}
+      buttonWidth={36}
+      buttonHeight={32}
+      buttonMargin={3}
       buttons={[
         [
           {style: "default", className:"_C", display: <span>C</span>, action: Action.clear},
