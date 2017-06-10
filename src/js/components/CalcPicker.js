@@ -6,6 +6,18 @@ import Portal from 'react-portal'
 import PropTypes from 'prop-types';
 import Rect from '../classes/Rect'
 import Action from '../classes/Action'
+import Global from '../classes/Global'
+
+window.addEventListener('keydown', (e) => {
+  if(Global.currentCalclator){
+    Global.currentCalclator.props.buttons.forEach(row => row.forEach(btn => {
+      if(btn.keyDown && btn.keyDown(e)){
+        e.preventDefault()
+        btn.action(Global.currentCalclator, btn, e)
+      }
+    }))
+  }
+})
 
 export default class CalcPicker extends React.Component
 {
@@ -16,22 +28,27 @@ export default class CalcPicker extends React.Component
       openCalculator: false,
       value: props.initialValue
     }
-
-    window.addEventListener('keydown', (e) => {
-      if(this.state.openCalculator){
-        this.props.buttons.forEach(row => row.forEach(btn => {
-          if(btn.keyDown && btn.keyDown(e)){
-            e.preventDefault()
-            btn.action(this.refs.calculator, btn, e)
-          }
-        }))
-      }
-    })
   }
 
   componentWillReceiveProps(nextProps){
     if(this.props.locale != nextProps.locale){
       numeral.locale(nextProps.locale)
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.openCalculator !== prevState.openCalculator){
+      if(this.state.openCalculator === true){
+        Global.currentCalclator = this.refs.calculator
+      }
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    if(this.state.openCalculator !== nextState.openCalculator){
+      if(nextState.openCalculator !== true && Global.currentCalclator === this.refs.calculator){
+        Global.currentCalclator = undefined
+      }
     }
   }
 
@@ -61,7 +78,7 @@ export default class CalcPicker extends React.Component
         <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
           {numeral(this.state.value).format(this.props.format)}
         </button>
-        <Portal closeOnEsc closeOnOutsideClick isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
+        <Portal closeOnEsc closeOnOutsideClick={this.props.closeOnOutsideClick} isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
           <Calculator
             title={this.props.title}
             ref='calculator'
@@ -124,6 +141,7 @@ CalcPicker.propTypes = {
   closeOnEnterAction: PropTypes.bool,
   zIndex: PropTypes.number,
   title: PropTypes.string,
+  closeOnOutsideClick: PropTypes.bool,
 }
 
 CalcPicker.defaultProps = {
@@ -170,4 +188,5 @@ CalcPicker.defaultProps = {
   buttonWidth: 48,
   buttonHeight: 32,
   buttonMargin: 3,
+  closeOnOutsideClick: true
 }
