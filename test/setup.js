@@ -1,6 +1,6 @@
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
+const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
 
 global.window = dom.window;
 global.document = dom.window.document;
