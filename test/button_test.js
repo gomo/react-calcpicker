@@ -97,6 +97,5 @@ describe('Button', () => {
       const bMarginLeft = (buttonWidth * num) + totalMargin
       assert(button.get(0).style.marginLeft === bMarginLeft + 'px')
     })
-
   })
 })

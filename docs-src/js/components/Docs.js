@@ -10,9 +10,11 @@ import Positions from './options/Positions'
 import CloseButton from './options/CloseButton'
 import FormatLocale from './options/FormatLocale'
 import CloseOnEnterAction from './options/CloseOnEnterAction'
+import CloseOnOutsideClick from './options/CloseOnOutsideClick'
 import ZIndex from './options/ZIndex'
 import Title from './options/Title'
 import ButtonSize from './options/ButtonSize'
+import ExclusionGroup from './options/ExclusionGroup'
 
 export default class Docs extends React.Component
 {
@@ -43,14 +45,20 @@ export default class Docs extends React.Component
       title: "format and locale",
       component: FormatLocale
     },{
-      title: "closeOnEnterAction",
-      component: CloseOnEnterAction
-    },{
       title: "zIndex",
       component: ZIndex
     },{
       title: "title",
       component: Title
+    },{
+      title: "closeOnEnterAction",
+      component: CloseOnEnterAction
+    },{
+      title: "closeOnOutsideClick",
+      component: CloseOnOutsideClick
+    },{
+      title: "exclusionGroup",
+      component: ExclusionGroup
     }]
 
     this.state = {

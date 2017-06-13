@@ -2,6 +2,7 @@ import React from 'react'
 import numeral from 'numeral'
 import Button from './Button'
 import Rect from '../classes/Rect'
+import Global from '../classes/Global'
 
 export default class Calculator extends React.Component
 {
@@ -210,6 +211,11 @@ export default class Calculator extends React.Component
     this.props.onClickClose()
   }
 
+  onClickButton(btnProps, event){
+    Global.currentCalclator = this;
+    btnProps.action(this, btnProps, event)
+  }
+
   render(){
     const locale = numeral.localeData();
     const style = {transform: `translate(${this.state.x}px, ${this.state.y}px)`}
@@ -217,7 +223,7 @@ export default class Calculator extends React.Component
       style['zIndex'] = this.props.zIndex;
     }
     return (
-      <div ref="calculator" className="react-calcpicker__calculator" style={style}>
+      <div ref="calculator" className="react-calcpicker__calculator" style={style} onClick={e => Global.currentCalclator = this}>
         <div className="react-calcpicker__calculator-header">
           <div className="react-calcpicker__calculator-header-title" style={{width: ((this.props.buttonWidth * 4) + (this.props.buttonMargin * 6)) - this.closeButtonSize}}>
             {this.props.title}
@@ -252,7 +258,7 @@ export default class Calculator extends React.Component
                     style={btn.style}
                     span={btn.span}
                     display={btn.display}
-                    onClick={e => btn.action(this, btn, e)}
+                    onClick={e => this.onClickButton(btn, e)}
                     width={this.props.buttonWidth}
                     height={this.props.buttonHeight}
                     margin={this.props.buttonMargin}
