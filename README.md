@@ -12,11 +12,14 @@ https://gomo.github.io/react-calcpicker/
 ### 2.1.0
 
  * Added closeOnOutsideClick option.
- * Added exclusionGroup option. 
+ * Added exclusionGroup option.
 
 ### 2.0.0
 
  * Added properties to change the size of the button, and ceased designating the button size in CSS.
+
+#### migration
+
  * The `size` element of the buttons property has been renamed to `span`.
 
 ### 1.2.0
