@@ -52,8 +52,21 @@ export default class CalcPicker extends React.Component
     }
   }
 
-  onClickAmount(e){
+  onClickPicker(e){
     e.preventDefault();
+    if(this.props.exclusionGroup){
+      let alreadyOpend = false
+      this.props.exclusionGroup.forEach(picker => {
+        if(picker === this) alreadyOpend = true
+        if(picker.state.openCalculator){
+          picker.setState({openCalculator: false})
+        }
+      })
+
+      if(!alreadyOpend){
+        this.props.exclusionGroup.push(this)
+      }
+    }
     this.setState({openCalculator: true});
     return false;
   }
@@ -75,7 +88,7 @@ export default class CalcPicker extends React.Component
   render(){
     return (
       <div className="react-calcpicker">
-        <button ref="button" className={this.props.className} onClick={(e) => this.onClickAmount(e)}>
+        <button ref="button" className={this.props.className} onClick={(e) => this.onClickPicker(e)}>
           {numeral(this.state.value).format(this.props.format)}
         </button>
         <Portal closeOnEsc closeOnOutsideClick={this.props.closeOnOutsideClick} isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
@@ -142,6 +155,7 @@ CalcPicker.propTypes = {
   zIndex: PropTypes.number,
   title: PropTypes.string,
   closeOnOutsideClick: PropTypes.bool,
+  exclusionGroup: PropTypes.array,
 }
 
 CalcPicker.defaultProps = {
@@ -188,5 +202,6 @@ CalcPicker.defaultProps = {
   buttonWidth: 48,
   buttonHeight: 32,
   buttonMargin: 3,
-  closeOnOutsideClick: true
+  closeOnOutsideClick: true,
+  exclusionGroup: undefined,
 }
