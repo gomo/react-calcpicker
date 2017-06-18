@@ -63,9 +63,10 @@ export default class Calculator extends React.Component
   }
 
   inputToDisplay(number){
-    if(this.state.appendMode){
+    const strDisplay = this.state.display.toString()
+    if(strDisplay !== '0' && this.state.appendMode){
       this.setState({
-        display: this.state.display + number,
+        display: strDisplay + number,
       })
     } else {
       this.setState({

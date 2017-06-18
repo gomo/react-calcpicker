@@ -127,6 +127,10 @@ describe('Calculator', () => {
     clickButton(calc, '00')
     assert(getNumberState(calc, 'value') === "0")
     assert(getNumberState(calc, 'display') === "123456789000")
+
+    clickButton(calc, 'AC', '0', '1')
+    assert(getNumberState(calc, 'value') === "0")
+    assert(getNumberState(calc, 'display') === "1")
   })
 
   it('should calculate the addition with `+` key.', function () {
