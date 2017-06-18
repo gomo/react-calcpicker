@@ -11,7 +11,7 @@ export default class Calculator extends React.Component
     this.state = {
       display: props.initialValue,
       value: props.initialValue,
-      appendMode: false,
+      appendMode: true,
       format: '0,0[.]0[000000000000]',
       operator: {},
       unit: {},
