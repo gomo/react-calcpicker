@@ -24,7 +24,7 @@ export default class Docs extends React.Component
       title: "onChange",
       component: OnChange
     },{
-      title: "className",
+      title: "Custom classes",
       component: ClassName
     },{
       title: "initialValue",
@@ -33,7 +33,7 @@ export default class Docs extends React.Component
       title: "buttons",
       component: Buttons
     },{
-      title: "buttonWidth, buttonHeight, buttonMargin",
+      title: "Button size",
       component: ButtonSize
     },{
       title: "positions",

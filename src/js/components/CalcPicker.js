@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Rect from '../classes/Rect'
 import Action from '../classes/Action'
 import Global from '../classes/Global'
+import classNames from 'class-names'
 
 window.addEventListener('keydown', (e) => {
   if(Global.currentCalclator){
@@ -87,8 +88,8 @@ export default class CalcPicker extends React.Component
 
   render(){
     return (
-      <div className="react-calcpicker">
-        <button ref="button" className={this.props.className} onClick={(e) => this.onClickPicker(e)}>
+      <div className={classNames('react-calcpicker', this.props.wrapperClass)}>
+        <button ref="button" className={classNames(this.props.className, this.props.buttonClass)} onClick={(e) => this.onClickPicker(e)}>
           {numeral(this.state.value).format(this.props.format)}
         </button>
         <Portal closeOnEsc closeOnOutsideClick={this.props.closeOnOutsideClick} isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
@@ -145,6 +146,8 @@ CalcPicker.propTypes = {
   buttonHeight: PropTypes.number,
   buttonMargin: PropTypes.number,
   className: PropTypes.string,
+  wrapperClass: PropTypes.string,
+  buttonClass: PropTypes.string,
   closeButton: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string,

@@ -9,6 +9,12 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 2.2.0
+
+* Added wrapperClass option.
+* Changed the name of the className option to buttonClass. (className is still working.)
+* Fixed the title line-height.
+
 ### 2.1.0
 
  * Added closeOnOutsideClick option.
