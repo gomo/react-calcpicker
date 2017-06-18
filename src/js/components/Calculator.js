@@ -10,7 +10,7 @@ export default class Calculator extends React.Component
     super(props);
     this.state = {
       display: props.initialValue,
-      amount: props.initialValue,
+      value: props.initialValue,
       appendMode: false,
       format: '0,0[.]0[000000000000]',
       operator: {},
@@ -108,20 +108,20 @@ export default class Calculator extends React.Component
 
   execute(callback = () => {}){
     let display = this.state.display;
-    let amount = this.state.amount;
+    let value = this.state.value;
     let calculated = false;
     if(this.state.operator.value){
-      display = this.calc(parseFloat(amount, 10), this.state.operator.value, parseFloat(display, 10));
+      display = this.calc(parseFloat(value, 10), this.state.operator.value, parseFloat(display, 10));
       calculated = true;
     }
 
-    amount = display;
+    value = display;
 
     this.setState({
       operator: {},
       unit: {},
       display: display,
-      amount: amount,
+      value: value,
       appendMode: false,
     }, () => {
       callback()
@@ -179,7 +179,7 @@ export default class Calculator extends React.Component
   allClear(){
     this.setState({
       display: '0',
-      amount: '0',
+      value: '0',
       operator: {},
       appendMode: false,
       unit: {},
@@ -189,12 +189,12 @@ export default class Calculator extends React.Component
   delete(){
     if(this.state.appendMode){
       const newState = {}
-      let value = this.state.display.toString()
-      if(value === '0'){
+      let newDisplay = this.state.display.toString()
+      if(newDisplay === '0'){
         newState['unit'] = {}
       }
-      value = value.substr(0, value.length - 1);
-      newState['display'] = !value ? 0 : value;
+      newDisplay = newDisplay.substr(0, newDisplay.length - 1);
+      newState['display'] = !newDisplay ? 0 : newDisplay;
       this.setState(newState)
     }
   }
@@ -204,7 +204,7 @@ export default class Calculator extends React.Component
   }
 
   fix(){
-    if(this.props.onCalculated) this.props.onCalculated(this.state.amount)
+    if(this.props.onCalculated) this.props.onCalculated(this.state.value)
   }
 
   close(){
