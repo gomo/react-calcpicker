@@ -9,6 +9,12 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 2.2.1
+
+* Fixed a bug that did not respond when calling delete() after opening the calculator dialog.
+* Fixed a bug when you first press 0.
+* Changed to append the number to the dispay when input a number after opening the calculator dialog.
+
 ### 2.2.0
 
 * Added wrapperClass option.
