@@ -55,6 +55,10 @@ export default class CalcPicker extends React.Component
 
   onClickPicker(e){
     e.preventDefault();
+    if(this.props.shouldOpen() === false){
+      return false
+    }
+
     if(this.props.exclusionGroup){
       let alreadyOpend = false
       this.props.exclusionGroup.forEach(picker => {
@@ -159,6 +163,7 @@ CalcPicker.propTypes = {
   title: PropTypes.string,
   closeOnOutsideClick: PropTypes.bool,
   exclusionGroup: PropTypes.array,
+  shouldOpen: PropTypes.func
 }
 
 CalcPicker.defaultProps = {
@@ -207,4 +212,5 @@ CalcPicker.defaultProps = {
   buttonMargin: 3,
   closeOnOutsideClick: true,
   exclusionGroup: undefined,
+  shouldOpen: () => true
 }

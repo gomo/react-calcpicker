@@ -15,6 +15,7 @@ import ZIndex from './options/ZIndex'
 import Title from './options/Title'
 import ButtonSize from './options/ButtonSize'
 import ExclusionGroup from './options/ExclusionGroup'
+import ShouldOpen from './options/ShouldOpen'
 
 export default class Docs extends React.Component
 {
@@ -59,6 +60,9 @@ export default class Docs extends React.Component
     },{
       title: "exclusionGroup",
       component: ExclusionGroup
+    },{
+      title: "shouldOpen",
+      component: ShouldOpen
     }]
 
     this.state = {
