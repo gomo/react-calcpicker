@@ -1,15 +1,13 @@
 var webpack = require("webpack");
 
 module.exports = {
-  entry: __dirname + '/react-calcpicker.js',
   output: {
-      path: __dirname + '/../../dist/',
       filename: 'react-calcpicker.js',
       libraryTarget: 'umd',
       library: 'ReactCalcPicker',
   },
   resolve: {
-    extensions: ['', ".js", ".jsx", ".es6"]
+    extensions: [".js"]
   },
   externals: [
     {
@@ -73,13 +71,12 @@ module.exports = {
   watch: true,
   devtool: "#inline-source-map",
   module: {
-    loaders: [{
-      test: /(\.jsx?$|\.es6?$)/,
-      loader: 'babel',
+    rules: [{
+      test: /(\.js$)/,
+      loader: 'babel-loader',
       query:
       {
-          presets:['es2015', 'react'],
-          plugins: [["transform-es2015-classes", { "loose": true }]]
+          presets:['es2015', 'react']
       },
       exclude: /node_modules/
     }]

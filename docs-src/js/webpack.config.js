@@ -1,13 +1,11 @@
 var webpack = require("webpack");
 
 module.exports = {
-  entry: __dirname + '/app.js',
   output: {
-      path: __dirname + '/../../docs/',
       filename: 'index.js'
   },
   resolve: {
-    extensions: ['', ".js", ".jsx", ".es6"]
+    extensions: [".js"]
   },
   externals: {
     'react': 'React',
@@ -17,12 +15,11 @@ module.exports = {
   devtool: "#inline-source-map",
   module: {
     loaders: [{
-      test: /(\.jsx?$|\.es6?$)/,
-      loader: 'babel',
+      test: /(\.js$)/,
+      loader: 'babel-loader',
       query:
       {
           presets:['es2015', 'react'],
-          plugins: [["transform-es2015-classes", { "loose": true }]]
       },
       exclude: /node_modules/
     }]

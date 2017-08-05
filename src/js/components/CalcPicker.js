@@ -35,6 +35,10 @@ export default class CalcPicker extends React.Component
     if(this.props.locale != nextProps.locale){
       numeral.locale(nextProps.locale)
     }
+
+    if(this.props.initialValue != nextProps.initialValue){
+      this.setState({'value': nextProps.initialValue})
+    }
   }
 
   componentDidUpdate(prevProps, prevState){

@@ -28,4 +28,17 @@ describe('CalcPicker', () => {
 
     assert(picker.instance().refs.calculator === undefined)
   })
+
+  it('should update its display when the initialValue property is updated.', function () {
+    const picker = mount(
+      <CalcPicker onChange={() => {}} className="foobar" initialValue={10000}  />
+    )
+
+    assert(picker.state('value') === 10000)
+    assert(picker.find('button').text() === '10,000')
+
+    picker.setProps({initialValue: 12000})
+    assert(picker.state('value') === 12000)
+    assert(picker.find('button').text() === '12,000')
+  })
 })
