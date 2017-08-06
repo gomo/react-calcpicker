@@ -9,6 +9,15 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 2.3.1
+
+* Fixed an issue where value did not change even if initialValue was updated.
+* Updated webpack to ver3.
+
+### 2.3.0
+
+* Added shouldOpen option.
+
 ### 2.2.1
 
 * Fixed a bug that did not respond when calling delete() after opening the calculator dialog.
