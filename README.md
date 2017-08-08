@@ -5,6 +5,9 @@
 [![dependencies Status](https://david-dm.org/gomo/react-calcpicker/status.svg)](https://david-dm.org/gomo/react-calcpicker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+
+![DEMO](https://raw.githubusercontent.com/gomo/react-calcpicker/images/images/calcpicker.gif)
+
 https://gomo.github.io/react-calcpicker/
 
 ## History
