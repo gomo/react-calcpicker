@@ -12,6 +12,10 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 2.3.2
+
+* Drop compass.
+
 ### 2.3.1
 
 * Fixed an issue where value did not change even if initialValue was updated.

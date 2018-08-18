@@ -4,13 +4,9 @@
 
 .react-calcpicker__calculator {
   border: 1px solid #ccc;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
   border-radius: 6px;
   padding: 10px;
   padding-top: 5px;
-  -moz-box-shadow: 3px 3px 12px -3px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: 3px 3px 12px -3px rgba(0, 0, 0, 0.4);
   box-shadow: 3px 3px 12px -3px rgba(0, 0, 0, 0.4);
   display: inline-block;
   position: absolute;
@@ -29,13 +25,11 @@
   font-weight: bold;
   text-align: center;
   border: 1px solid transparent;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   cursor: pointer;
 }
 
@@ -83,8 +77,6 @@
   font-weight: bold;
   padding: 5px 10px;
   border: 1px solid #ccc;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
   border-radius: 4px;
   background-color: #f2fac9;
   line-height: 20px;
@@ -107,7 +99,6 @@
 }
 
 .react-calcpicker__calculator-header {
-  display: -webkit-flex;
   display: flex;
 }
 

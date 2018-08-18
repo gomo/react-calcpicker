@@ -1,6 +1,6 @@
 {
   "name": "react-calcpicker",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "The react component of keyboard with calculation function to input currency.",
   "main": "dist/react-calcpicker.js",
   "scripts": {
