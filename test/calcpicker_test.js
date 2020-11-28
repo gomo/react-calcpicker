@@ -16,14 +16,14 @@ describe('CalcPicker', () => {
       <CalcPicker onChange={() => {}} className="foobar" />
     )
     
-    assert(picker.instance().refs.calculator === undefined)
+    assert(picker.instance().calculatorRef.current === null)
     picker.find('button.foobar').simulate('click')
 
-    assert(picker.instance().refs.calculator !== undefined)
+    assert(picker.instance().calculatorRef.current !== null)
     const calcElem = document.getElementsByClassName("react-calcpicker__calculator-button-close")[0]
     calcElem.click()
 
-    assert(picker.instance().refs.calculator === undefined)
+    assert(picker.instance().calculatorRef.current === null)
   })
 
   it('should update its display when the initialValue property is updated.', function () {

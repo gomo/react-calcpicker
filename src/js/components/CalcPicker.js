@@ -2,9 +2,9 @@ import React from 'react'
 import numeral from 'numeral'
 import 'numeral/locales'
 import Calculator from './Calculator'
-import Portal from 'react-portal'
 import PropTypes from 'prop-types';
 import Rect from '../classes/Rect'
+import ReactDOM from 'react-dom'
 import Action from '../classes/Action'
 import Global from '../classes/Global'
 import classNames from 'class-names'
@@ -29,31 +29,32 @@ export default class CalcPicker extends React.Component
       openCalculator: false,
       value: props.initialValue
     }
-  }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.locale != nextProps.locale){
-      numeral.locale(nextProps.locale)
-    }
-
-    if(this.props.initialValue != nextProps.initialValue){
-      this.setState({'value': nextProps.initialValue})
-    }
+    this.calculatorRef = React.createRef()
+    this.buttonRef = React.createRef()
   }
 
   componentDidUpdate(prevProps, prevState){
     if(this.state.openCalculator !== prevState.openCalculator){
       if(this.state.openCalculator === true){
-        Global.currentCalclator = this.refs.calculator
+        Global.currentCalclator = this.calculatorRef.current
+      } else if(Global.currentCalclator === this.calculatorRef.current) {
+        Global.currentCalclator = undefined
       }
+    }
+
+    if(this.props.initialValue != prevProps.initialValue){
+      this.setState({'value': this.props.initialValue})
+    }
+
+    if(this.props.locale != prevProps.locale){
+      numeral.locale(this.props.locale)
     }
   }
 
-  componentWillUpdate(nextProps, nextState){
-    if(this.state.openCalculator !== nextState.openCalculator){
-      if(nextState.openCalculator !== true && Global.currentCalclator === this.refs.calculator){
-        Global.currentCalclator = undefined
-      }
+  componentWillUnmount(){
+    if(Global.currentCalclator === this.calculatorRef.current) {
+      Global.currentCalclator = undefined
     }
   }
 
@@ -97,27 +98,42 @@ export default class CalcPicker extends React.Component
   render(){
     return (
       <div className={classNames('react-calcpicker', this.props.wrapperClass)}>
-        <button ref="button" className={classNames(this.props.className, this.props.buttonClass)} onClick={(e) => this.onClickPicker(e)}>
+        <button ref={this.buttonRef} className={classNames(this.props.className, this.props.buttonClass)} onClick={(e) => this.onClickPicker(e)}>
           {numeral(this.state.value).format(this.props.format)}
         </button>
-        <Portal closeOnEsc closeOnOutsideClick={this.props.closeOnOutsideClick} isOpened={this.state.openCalculator} onClose={() => this.onClosePortal()}>
-          <Calculator
-            title={this.props.title}
-            ref='calculator'
-            initialValue={this.state.value}
-            onClickClose={() => this.setState({openCalculator: false})}
-            button={this.refs.button}
-            positions={this.props.positions}
-            buttons={this.props.buttons}
-            onCalculated={value => this.changeValue(value)}
-            closeButton={this.props.closeButton}
-            closeOnEnterAction={this.props.closeOnEnterAction}
-            zIndex={this.props.zIndex}
-            buttonWidth={this.props.buttonWidth}
-            buttonHeight={this.props.buttonHeight}
-            buttonMargin={this.props.buttonMargin}
-          />
-        </Portal>
+        {this.state.openCalculator && ReactDOM.createPortal(
+          <React.Fragment>
+            <div
+              onClick={e => this.onClosePortal()}
+              style={{
+                position: "fixed",
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: this.props.zIndex
+              }}
+            />
+            <Calculator
+              title={this.props.title}
+              ref={this.calculatorRef}
+              initialValue={this.state.value}
+              onClickClose={() => this.setState({openCalculator: false})}
+              positions={this.props.positions}
+              buttons={this.props.buttons}
+              onCalculated={value => this.changeValue(value)}
+              closeButton={this.props.closeButton}
+              closeOnEnterAction={this.props.closeOnEnterAction}
+              buttonWidth={this.props.buttonWidth}
+              buttonHeight={this.props.buttonHeight}
+              buttonMargin={this.props.buttonMargin}
+              zIndex={this.props.zIndex + 1}
+              button={this.buttonRef.current}
+            />
+          </React.Fragment>
+        , document.body)}
       </div>
     );
   }
@@ -216,5 +232,6 @@ CalcPicker.defaultProps = {
   buttonMargin: 3,
   closeOnOutsideClick: true,
   exclusionGroup: undefined,
-  shouldOpen: () => true
+  shouldOpen: () => true,
+  zIndex: 1
 }

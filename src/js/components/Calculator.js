@@ -22,14 +22,15 @@ export default class Calculator extends React.Component
     this.closeButtonSize = 30;
 
     window.onresize = () => this.adjustPosition();
+
+    this.wrapperRef = React.createRef()
   }
 
   adjustPosition(){
-    if(this.refs.calculator){
+    if(this.wrapperRef.current){
       const windowRect = Rect.createWithWindow()
       const buttonRect = Rect.createWithElement(this.props.button);
-      const calcRect = Rect.createWithElement(this.refs.calculator, this.state.x, this.state.y);
-
+      const calcRect = Rect.createWithElement(this.wrapperRef.current, this.state.x, this.state.y);
       const rects = []
       let newCalcRect = undefined;
       for (var i = 0; i < this.props.positions.length; i++) {
@@ -218,13 +219,12 @@ export default class Calculator extends React.Component
   }
 
   render(){
-    const locale = numeral.localeData();
     const style = {transform: `translate(${this.state.x}px, ${this.state.y}px)`}
     if(this.props.zIndex !== undefined){
       style['zIndex'] = this.props.zIndex;
     }
     return (
-      <div ref="calculator" className="react-calcpicker__calculator" style={style} onClick={e => Global.currentCalclator = this}>
+      <div ref={this.wrapperRef} className="react-calcpicker__calculator" style={style} onClick={e => Global.currentCalclator = this}>
         <div className="react-calcpicker__calculator-header">
           <div className="react-calcpicker__calculator-header-title" style={{width: ((this.props.buttonWidth * 4) + (this.props.buttonMargin * 6)) - this.closeButtonSize}}>
             {this.props.title}
