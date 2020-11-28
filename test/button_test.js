@@ -1,6 +1,9 @@
 import React from 'react'
 import assert from 'power-assert'
-import { mount, shallow } from 'enzyme'
+
+import Adapter from 'enzyme-adapter-react-16'
+import { mount, shallow, configure } from 'enzyme'
+configure({adapter: new Adapter()})
 
 import Calculator from '../src/js/components/Calculator'
 import Action from '../src/js/classes/Action'
@@ -67,8 +70,8 @@ describe('Button', () => {
       button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button.target');
       const totalMargin = buttonMargin * ((num - 1) * 2)
       const bWidth = (buttonWidth * num) + totalMargin
-      assert(button.get(0).style.width === bWidth + "px")
-      assert(button.get(0).style.position === 'absolute')
+      assert(button.instance().style.width === bWidth + "px")
+      assert(button.instance().style.position === 'absolute')
     })
 
     // check button height
@@ -80,9 +83,9 @@ describe('Button', () => {
       const totalMargin = buttonMargin * ((num - 1) * 2)
       const bHeight = (buttonHeight * num) + totalMargin
       const bTop = -((buttonHeight * (num - 1)) + totalMargin)
-      assert(button.get(0).style.height === bHeight + "px")
-      assert(button.get(0).style.top === bTop + "px")
-      assert(button.get(0).style.position === 'absolute')
+      assert(button.instance().style.height === bHeight + "px")
+      assert(button.instance().style.top === bTop + "px")
+      assert(button.instance().style.position === 'absolute')
     })
 
     // check button margint-left
@@ -95,7 +98,7 @@ describe('Button', () => {
       button = calc.find('.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button.target');
       const totalMargin = buttonMargin * ((num * 2) + 1)
       const bMarginLeft = (buttonWidth * num) + totalMargin
-      assert(button.get(0).style.marginLeft === bMarginLeft + 'px')
+      assert(button.instance().style.marginLeft === bMarginLeft + 'px')
     })
   })
 })

@@ -1,6 +1,9 @@
 import React from 'react'
 import assert from 'power-assert'
-import { mount, shallow } from 'enzyme'
+
+import Adapter from 'enzyme-adapter-react-16'
+import { mount, shallow, configure } from 'enzyme'
+configure({adapter: new Adapter()})
 
 import Calculator from '../src/js/components/Calculator'
 import Action from '../src/js/classes/Action'
@@ -64,9 +67,9 @@ const clickButton = (calc, ...symbols) => {
   symbols.forEach(symbol => {
     const className = '.react-calcpicker__calculator-buttons .react-calcpicker__calculator-button.' + (symbolMap[symbol] ? symbolMap[symbol] : '_' + symbol);
     const button = calc.find(className);
-    if(button.nodes.length === 0){
+    if(button.getElements().length === 0){
       throw 'Missing ' + className + ' element.';
-    } else if(button.nodes.length > 1){
+    } else if(button.getElements().length > 1){
       throw 'Find multiple ' + className + ' elements.';
     }
     button.simulate('click')

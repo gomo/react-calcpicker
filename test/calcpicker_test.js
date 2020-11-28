@@ -1,7 +1,10 @@
 import React from 'react'
 import TestUtils from 'react-dom/test-utils'
 import assert from 'power-assert'
-import { mount, ReactWrapper } from 'enzyme'
+
+import Adapter from 'enzyme-adapter-react-16'
+import { mount, shallow, configure, ReactWrapper } from 'enzyme'
+configure({adapter: new Adapter()})
 
 import CalcPicker from '../src/js/components/CalcPicker'
 import Action from '../src/js/classes/Action'
@@ -12,19 +15,13 @@ describe('CalcPicker', () => {
     const picker = mount(
       <CalcPicker onChange={() => {}} className="foobar" />
     )
-
+    
     assert(picker.instance().refs.calculator === undefined)
-
-    picker.find('.foobar').simulate('click')
+    picker.find('button.foobar').simulate('click')
 
     assert(picker.instance().refs.calculator !== undefined)
-
-    const calc = new ReactWrapper(
-      picker.instance().refs.calculator,
-      true
-    );
-
-    calc.find('.react-calcpicker__calculator-button-close').simulate('click')
+    const calcElem = document.getElementsByClassName("react-calcpicker__calculator-button-close")[0]
+    calcElem.click()
 
     assert(picker.instance().refs.calculator === undefined)
   })
