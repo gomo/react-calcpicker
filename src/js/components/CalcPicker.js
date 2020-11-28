@@ -103,19 +103,21 @@ export default class CalcPicker extends React.Component
         </button>
         {this.state.openCalculator && ReactDOM.createPortal(
           <React.Fragment>
-            <div
-              onClick={e => this.onClosePortal()}
-              style={{
-                position: "fixed",
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                zIndex: this.props.zIndex
-              }}
-            />
+            {this.props.closeOnOutsideClick &&
+              <div
+                onClick={e => this.onClosePortal()}
+                style={{
+                  position: "fixed",
+                  width: '100%',
+                  height: '100%',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  zIndex: this.props.zIndex
+                }}
+              />            
+            }
             <Calculator
               title={this.props.title}
               ref={this.calculatorRef}
