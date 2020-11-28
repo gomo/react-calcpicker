@@ -12,6 +12,10 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 3.0.1
+
+* Update react to 16
+
 ### 2.3.2
 
 * Drop compass.
