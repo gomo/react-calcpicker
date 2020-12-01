@@ -35,26 +35,12 @@ export default class CalcPicker extends React.Component
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(this.state.openCalculator !== prevState.openCalculator){
-      if(this.state.openCalculator === true){
-        Global.currentCalclator = this.calculatorRef.current
-      } else if(Global.currentCalclator === this.calculatorRef.current) {
-        Global.currentCalclator = undefined
-      }
-    }
-
     if(this.props.initialValue != prevProps.initialValue){
       this.setState({'value': this.props.initialValue})
     }
 
     if(this.props.locale != prevProps.locale){
       numeral.locale(this.props.locale)
-    }
-  }
-
-  componentWillUnmount(){
-    if(Global.currentCalclator === this.calculatorRef.current) {
-      Global.currentCalclator = undefined
     }
   }
 

@@ -203,6 +203,13 @@ export default class Calculator extends React.Component
 
   componentDidMount(){
     this.adjustPosition()
+    Global.currentCalclator = this
+  }
+
+  componentWillUnmount(){
+    if(Global.currentCalclator === this) {
+      Global.currentCalclator = undefined
+    }
   }
 
   fix(){
