@@ -14,6 +14,10 @@ https://gomo.github.io/react-calcpicker/
 
 ### 3.0.1
 
+* Fix infinite loop bug in componentDidUpdate.
+
+### 3.0.1
+
 * Fix memory leak bug.
 
 ### 3.0.1
