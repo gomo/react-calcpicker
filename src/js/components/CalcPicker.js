@@ -35,7 +35,7 @@ export default class CalcPicker extends React.Component
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(this.props.initialValue != prevProps.initialValue){
+    if(this.props.initialValue != prevProps.initialValue && this.state.value != this.props.initialValue){
       this.setState({'value': this.props.initialValue})
     }
 
