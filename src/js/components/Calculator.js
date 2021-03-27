@@ -273,7 +273,7 @@ export default class Calculator extends React.Component
         </div>
         {this.props.buttons.map((row, rowKey) => {
           return (
-            <div key={rowKey} className="react-calcpicker__calculator-buttons">
+            <div key={rowKey} className="react-calcpicker__calculator-buttons" style={{height: this.props.buttonHeight + (this.props.buttonMargin * 2)}}>
               {row.map((btn, btnKey) => {
                 return (
                   <Button
