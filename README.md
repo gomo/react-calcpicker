@@ -12,6 +12,11 @@ https://gomo.github.io/react-calcpicker/
 
 ## History
 
+### 3.1.0
+
+* Change methods calling `setState` to returning Promise.
+* Fix 100% width button bug.
+
 ### 3.0.1
 
 * Fix infinite loop bug in componentDidUpdate.
