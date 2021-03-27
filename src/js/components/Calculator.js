@@ -64,17 +64,19 @@ export default class Calculator extends React.Component
   }
 
   inputToDisplay(number){
-    const strDisplay = this.state.display.toString()
-    if(strDisplay !== '0' && this.state.appendMode){
-      this.setState({
-        display: strDisplay + number,
-      })
-    } else {
-      this.setState({
-        appendMode: true,
-        display: number,
-      })
-    }
+    return new Promise(resolve => {
+      const strDisplay = this.state.display.toString()
+      if(strDisplay !== '0' && this.state.appendMode){
+        this.setState({
+          display: strDisplay + number,
+        }, resolve)
+      } else {
+        this.setState({
+          appendMode: true,
+          display: number,
+        }, resolve)
+      }
+    })
   }
 
   calc(left, operator, right){
@@ -131,74 +133,90 @@ export default class Calculator extends React.Component
   }
 
   inputOperator(operator, btnProps){
-    if(this.state.appendMode){
-      this.execute(() => {
+    return new Promise(resolve => {
+      if(this.state.appendMode){
+        this.execute(() => {
+          this.setState({
+            appendMode: false,
+            operator: {
+              value: operator,
+              display: btnProps.display,
+            },
+          }, resolve)
+        })
+      } else {
         this.setState({
-          appendMode: false,
           operator: {
             value: operator,
             display: btnProps.display,
           },
-        })
-      })
-    } else {
-      this.setState({
-        operator: {
-          value: operator,
-          display: btnProps.display,
-        },
-      })
-    }
+        }, resolve)
+      }
+    })
   }
 
   inputDecimal(){
     if(this.state.display.indexOf('.') === -1){
-      this.inputToDisplay('.')
+      return this.inputToDisplay('.')
     }
+
+    return Promise.resolve()
   }
 
   inputPercent(btnProps){
-    if(this.state.operator.value){
-      this.setState({unit: {
-        value:'%',
-        display: btnProps.display
-      }})
-    } else {
-      this.setState({display: this.state.display / 100})
-    }
+    return new Promise(resolve => {
+      if(this.state.operator.value){
+        this.setState({unit: {
+          value:'%',
+          display: btnProps.display
+        }}, resolve)
+      } else {
+        this.setState({display: this.state.display / 100}, resolve)
+      }
+    })
   }
 
   clear(){
-    if(this.state.appendMode){
-      this.setState({
-        display: '0',
-        appendMode: false,
-        unit: {},
-      })
-    }
+    return new Promise(resolve => {
+      if(this.state.appendMode){
+        this.setState({
+          display: '0',
+          appendMode: false,
+          unit: {},
+        }, resolve)
+      } else {
+        resolve()
+      }
+    })
   }
 
   allClear(){
-    this.setState({
-      display: '0',
-      value: '0',
-      operator: {},
-      appendMode: false,
-      unit: {},
+    return new Promise(resolve => {
+      this.setState({
+        display: '0',
+        value: '0',
+        operator: {},
+        appendMode: false,
+        unit: {},
+      }, resolve)
     })
   }
 
   delete(){
-    if(this.state.appendMode){
-      const newState = {}
-      let newDisplay = this.state.display.toString()
-      if(newDisplay === '0'){
-        newState['unit'] = {}
+    return new Promise(resolve => {
+      if(this.state.appendMode){
+        const newState = {}
+        let newDisplay = this.state.display.toString()
+        if(newDisplay === '0'){
+          newState['unit'] = {}
+        }
+        newDisplay = newDisplay.substr(0, newDisplay.length - 1);
+        newState['display'] = !newDisplay ? 0 : newDisplay;
+        this.setState(newState, resolve)
+      } else {
+        resolve()
       }
-      newDisplay = newDisplay.substr(0, newDisplay.length - 1);
-      newState['display'] = !newDisplay ? 0 : newDisplay;
-      this.setState(newState)
-    }
+    })
   }
 
   componentDidMount(){

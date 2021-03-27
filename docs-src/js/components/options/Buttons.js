@@ -21,7 +21,14 @@ export default class Buttons extends React.Component
             onChange={val => console.info(val)}
             buttons= {[
               [
-                {style: "default", span: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => alert("WOW!!")},
+                {style: "default", span: {width: 2}, display: <i className="fa fa-bell-o" aria-hidden="true"></i>, action: (calc, btnProps, event) => {
+                  calc.clear()
+                    .then(() => {
+                      return calc.inputToDisplay('1234')
+                    }).then(() => {
+                      alert('WOW')
+                    })
+                }},
                 {style: "primary", display: "÷", action: Action.division, keyDown: e => e.key == '/'},
                 {style: "dark", display: "←", action: Action.backspace, keyDown: e => e.key == 'Backspace'},
               ],
