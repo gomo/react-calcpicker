@@ -35,7 +35,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.7",
-    "jsdom": "^10.0.0",
+    "jsdom": "^16.5.0",
     "mocha": "^3.5.0",
     "node-notifier": "^4.5.0",
     "power-assert": "^1.4.4",
